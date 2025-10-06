@@ -1,2 +1,20 @@
 Zadania z pierwszych laboratoriów
 
+1. Zainstaluj python ze strony python.org
+2. Zainstaluj IDE, np. Visual Studio Code, PyCharm lub inne.
+3. Stwórz plik HelloWorld.py, który wypisuje "Hello World!".
+4. Otwórz terminal lub command line i przejdź do katalogu z programem
+   (pożyteczne komendy: cd nazwa_katalogu, ls lub dir w celu wyświetlenia
+    zawartości katalogu).
+5. Wykonaj plik HelloWorld.py komendą "python HelloWorld.py"
+6. Otwórz interpreter Pythona (komenda "python") 
+   i wczytaj plik jako bibliotekę (komenda ">>> import HelloWorld").
+7. Wyjdź z interpretera (komenda ">>> quit").
+8. Zainstaluj pakier pyinstaller (komenda "python -m pip install pyinstaller).
+9. Skompiluj plik do postaci exe (komenda "pyinstaller --onefile HelloWorld.py").
+10. Znajdź stworzony plik .exe i wykonaj go.
+11. Jeśli to potrzebne zmodyfikuj plik HelloWorld.py przez dodanie
+    instrukcji input(), tak aby okienko w wypisanym napisem po uruchomienieu
+    pliku .exe nie zamykało się zaraz po wypisaniu "Hello World!".
+   
+
