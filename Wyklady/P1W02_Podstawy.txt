@@ -3,9 +3,47 @@ IDE - VSCode, PyCharm, IDLE, Notatnik, ....
 
 Podstawy języka 
 
+1.
 Zmienne - miejsce w pamięci komputera, w którym przechowujemy informacje.
 Zmiennym możemy przypisać wartość, zwyle możemy też zmienić wartość zmiennej.
 W zależności od rodzaju informacji, zmienne zajmują różną ilość pamięci w komputerze.
+
+my_variable = 'John'
+print(my_variable)
+my_variable = 42
+print(my_variable)
+my_variable = True
+print(my_variable)
+
+Uwaga! Typowanie dynamiczne.
+Z typem zmiennej przychodzi: wielkość pamięci, którą zajmuje,
+                             rodzaj operacji, które możemy na niej wykonać,
+                             np. x+y, x*y, x[2], ...
+
+Instrukcja przypisania, =.
+L wartość, R wartość.
+
+Nazywanie zmiennych: nazwy powinny nieść informację,
+                     konwencje nazywania zmiennych:
+                     snake_case: małe litery i podkreślenie '_' jako łącznik,
+                     camelCase: pierwsza mała litera, potem duże na początku słów, 
+                                bez podkreśleń,
+2. 
+Instrukcja print
+print(arg1, arg2, ..., argN)
+
+3.
+Komentarze - zaczynają się symbolem '#'.
+Gdzie pisać komentarze?
+
+4. Ciągi znaków, String
+
+W ogranicznikach "Ciąg znaków" lub 'Inny ciąg znaków',
+"Powiedział 'pomidor' i roześmiał się." lub 'Powiedział "pomidor" i roześmiał się'
+lub 
+"Powiedział \"pomidor\" i roześmiał się.",
+"Katalog C:\\Users\\konrad"
+
 
 
 
