@@ -1,1 +1,12 @@
+REPL  - Read, Evaluate, Print, Loop
+IDE - VSCode, PyCharm, IDLE, Notatnik, ....
+
+Podstawy języka 
+
+Zmienne - miejsce w pamięci komputera, w którym przechowujemy informacje.
+Zmiennym możemy przypisać wartość, zwyle możemy też zmienić wartość zmiennej.
+W zależności od rodzaju informacji, zmienne zajmują różną ilość pamięci w komputerze.
+
+
+
 
