@@ -36,7 +36,51 @@ print(arg1, arg2, ..., argN)
 Komentarze - zaczynają się symbolem '#'.
 Gdzie pisać komentarze?
 
-4. Ciągi znaków, String
+4. Podstawowe typy danych
+całkowite (int), int('34')
+zmienno pozycyjne (float), float('3.14')
+
+operacje: +, -, *, /, //, %, **
+
++=, -=, ...
+x op=y to x = x op y
+
+bool: True, False
+Uwaga: 0, pusty ciąg, None są równe False
+inne wartości zachowują się jak True
+
+None typu NoneType
+
+4. Logika i kontrola wykonania
+
+==, !=, <, >, <=, >=, 
+and, or, not
+x is None
+
+Bloki komend - grupowane przez wcięcia głębokości czterech spacji
+
+if warunek: 
+    Blok_komend
+
+if warunek:
+    Blok_komend1
+else:
+    Blok_komend2
+
+if war1:
+   B1
+elif war2: 
+    B2
+elif war3: 
+    B3
+else:
+    B4
+
+Pętla 
+while warunek:
+     
+
+X. Ciągi znaków, String
 
 W ogranicznikach "Ciąg znaków" lub 'Inny ciąg znaków',
 "Powiedział 'pomidor' i roześmiał się." lub 'Powiedział "pomidor" i roześmiał się'
