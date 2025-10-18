@@ -1,1 +1,9 @@
+Proste konstrukcje programistyczne
+
+1. Napisz program, który prosi użytkownika o imię i wypisuje "Hello, imie!".
+2. Napisz program, który prosi użytkownika o podanie liczby n
+   a następnie sprawdza, czy liczba n jest pierwsza. 
+   Wykorzystaj pętlę "for i in range(n)" a następnie 
+   zastanów się, jak można przyśpieszyć działanie tego programu.
+3. Napisz program, który wyznaczy największy wspólny dzielnik dwóch liczb.
 
