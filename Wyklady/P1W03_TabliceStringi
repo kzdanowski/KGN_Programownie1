@@ -1,0 +1,14 @@
+Temat: Złożone struktury danych. 
+Tablice, pary uporządkowane, ciągi znaków, ...
+
+1. Tablica
+
+2. Para uporządkowana
+
+3. Ciąg znaków, String
+
+W ogranicznikach "Ciąg znaków" lub 'Inny ciąg znaków',
+"Powiedział 'pomidor' i roześmiał się." lub 'Powiedział "pomidor" i roześmiał się'
+lub 
+"Powiedział \"pomidor\" i roześmiał się.",
+"Katalog C:\\Users\\konrad"
