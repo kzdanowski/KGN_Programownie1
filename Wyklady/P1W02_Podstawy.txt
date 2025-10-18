@@ -78,15 +78,17 @@ else:
 
 Pętla 
 while warunek:
+    Blok_instrukcji
+Znaczenie pętli: powtarzaj Blok_instrukcji dopóki spełniniony jest warunek.
+Przykład.
+i = 0
+while i<=10:
+    print("Iteracja pętli numer: ", i)
+    i += 1
+
+Program wypisze liczby od 0 do 10.
      
 
-X. Ciągi znaków, String
-
-W ogranicznikach "Ciąg znaków" lub 'Inny ciąg znaków',
-"Powiedział 'pomidor' i roześmiał się." lub 'Powiedział "pomidor" i roześmiał się'
-lub 
-"Powiedział \"pomidor\" i roześmiał się.",
-"Katalog C:\\Users\\konrad"
 
 
 
