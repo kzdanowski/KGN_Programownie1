@@ -6,4 +6,6 @@ Proste konstrukcje programistyczne
    Wykorzystaj pętlę "for i in range(n)" a następnie 
    zastanów się, jak można przyśpieszyć działanie tego programu.
 3. Napisz program, który wyznaczy największy wspólny dzielnik dwóch liczb.
-
+4. Napisz program, który wyznaczy najmniejszą wspólną wielokrotność dwóch liczb.
+   Zastanów się, czy można wykorzystać tutaj program liczący największy
+   wspólny dzielnik.
