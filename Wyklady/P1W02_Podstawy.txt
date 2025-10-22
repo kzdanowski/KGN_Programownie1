@@ -100,7 +100,10 @@ for i in range(0,10):
     print(i)
 wypisze liczby: 0, 1, ..., 9.
 
-     
+Wykonaniem pętli (wile, for ... in ...) możemy sterować też
+instrukcjami:
+break - zakończ wykonywanie pętli,
+continue - zakończ aktualną iterację pętli i skocz do jej początku.     
 
 
 
