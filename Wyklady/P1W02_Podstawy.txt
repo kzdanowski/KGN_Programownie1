@@ -87,6 +87,19 @@ while i<=10:
     i += 1
 
 Program wypisze liczby od 0 do 10.
+
+Inny rodzaj pętli z ograniczeniem na ilość iteracji 
+to pętla loop. 
+W najprostszej wersji można użyć jej z konstrucją range(poczatek, koniec):
+for i in range(poczatek, koniec):
+     Blok_Instrukcji
+Wtedy i przyjmuje wartości od poczatek do koniec-1 
+i dla każdej z nich wykona się Blok_Instrukcji.
+Jeśli brakuje argumentu poczatek, to i przyjmuje wartosci od 0 do koniec-1.
+for i in range(0,10):
+    print(i)
+wypisze liczby: 0, 1, ..., 9.
+
      
 
 
