@@ -5,6 +5,7 @@ Listy, n-tki uporządkowane, zbiory, ciągi znaków, ...
 
 Lista to struktura danych, w której elementy są ułożone 
 liniowo.  W Pythonie mamy dostęp w stałym czasie do i-tego elementu listy.
+Możemy zmieniać elementy listy - są one ,,mutable''
 
 Listy tworzymy:
 lista = [1, 2, "Ala", "ma", "kota"]
@@ -59,6 +60,12 @@ Warto je przejrzeć.
 
 list(enumerate(list))
 
+Elementy list można zmieniać.
+x = [1,2,3]
+y = [x, 4,5,6]
+Jak wygląda y?
+x[1] = 9
+Jak wygląda x? Jak wygląda y?
 
 2. n-tka uporządkowana
 
@@ -67,6 +74,8 @@ albo x = tuple(lista).
 np. x = tuple("Ala ma kota")
 
 Uwaga. Elementów n-tek nie można modyfikować!
+N-tki są immutable.
+
 x = (1,2,3)
 x[1] = 4 generuje błąd
 
@@ -75,10 +84,66 @@ Tworzymy je przez {el1, el2, ..., el3}
 albo używając wyróżniania 
 zbior = {i for i in range(9)}
 
+zbior.add("ala")
+zbior.remove(3)
+
+"ela" in zbior 
+W zbiorach mogą znajdować się tylko elementy immutable: n-tki, liczby, ciągi znaków.
+Nie mogą znajdować się: listy, zbiory.
+
+Operacje
+| - suma,
+& - iloczyn,
+- - różnica
+^ - różnica symetryczna
+
 3. Ciąg znaków, String
+
+Znak - 'a' 
 
 W ogranicznikach "Ciąg znaków" lub 'Inny ciąg znaków',
 "Powiedział 'pomidor' i roześmiał się." lub 'Powiedział "pomidor" i roześmiał się'
 lub 
 "Powiedział \"pomidor\" i roześmiał się.",
 "Katalog C:\\Users\\konrad"
+x = '\''
+x[0]="'"
+Ciągi znaków są "immutable".
+Ale
+x = "Ala"
+x[0] = 'O'
+x == "Ola"
+
+Znak '\'
+x = "Ala \n ma kota"
+print(x)
+x = """
+    Ala 
+       ma kota
+    """
+Operacje
++
+len(str)
+str*liczba
+split()
+(A Begginers Guide to Python 3 Programming, Jason Hunt)
+title = 'The Good, The Bad, and the Ugly'
+print('Source string:', title)
+print('Split using a space')
+print(title.split(' '))
+print('Split using a comma')
+print(title.split(','))
+This produces as output
+Source string: The Good, The Bad, and the Ugly
+Split using a space
+['The', 'Good,', 'The', 'Bad,', 'and', 'the', 'Ugly']
+Split using a comma
+['The Good', ' The Bad', ' and the Ugly']
+A teraz pozbędziemy się spacji:
+output = [y.strip() for y in title.split(',')]
+
+f - string
+r - string
+fr-string
+
+
