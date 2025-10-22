@@ -24,6 +24,13 @@ lista.extend(inna_lista), lista += inna_lista dodają na koniec lista
                                    listę inna_lista
                                    lub dowolny obiekt iterowalny.
 lista1+lista2 łączy dwie listy (konkatenuje).
+lista1+=lista2 - dołącza do lista1 lista2
+
+Pytanie.
+x = [1,2]
+Jaka jest różnica pomiędzy:
+x+=[3,4]
+x.append([3,4])
 
 lista.remove(elem) usuwa pierwsze wystąpienie elem na lista.
 Uwaga. Jeśli elem nie występuje w lista mamy błąd.
@@ -31,8 +38,27 @@ lista.pop(index) usuwa element o indeksie index
 
 "elem in lista" sprawdza, czy element jest na liście.
 
+Często mamy dwie wersje operacji na listach.
+x = [1,2,3, 9,3,5,4]
+sorted(x) - sortuje kopię listy x
+x.sort() - sortuje listę x
+
+x.sort() to wywołanie metody listy x, działa ona na liście,
+sorted(x) - wykonuje operację sortowania na kopii listy x
+
+Tworzenie list.
+Wyróżnianie.
+list1 = [i for i in range(2,8)]
+list2 = [i%3 for i in range(2,8)]
+list3 = [(i,j) for i in range(2,8) for j in range(3,6)]
+Co oznacza 
+list4 = [[(i,j) for i in range(2,8)] for j in range(3,6)] 
+
 Jest wiele metod działających na listach. 
 Warto je przejrzeć. 
+
+list(enumerate(list))
+
 
 2. n-tka uporządkowana
 
@@ -45,6 +71,9 @@ x = (1,2,3)
 x[1] = 4 generuje błąd
 
 3. Zbiory
+Tworzymy je przez {el1, el2, ..., el3}
+albo używając wyróżniania 
+zbior = {i for i in range(9)}
 
 3. Ciąg znaków, String
 
