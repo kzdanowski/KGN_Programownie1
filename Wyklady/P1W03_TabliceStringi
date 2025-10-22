@@ -1,9 +1,50 @@
 Temat: Złożone struktury danych. 
-Tablice, pary uporządkowane, ciągi znaków, ...
+Listy, n-tki uporządkowane, zbiory, ciągi znaków, ...
 
-1. Tablica
+1. Lista
 
-2. Para uporządkowana
+Lista to struktura danych, w której elementy są ułożone 
+liniowo.  W Pythonie mamy dostęp w stałym czasie do i-tego elementu listy.
+
+Listy tworzymy:
+lista = [1, 2, "Ala", "ma", "kota"]
+
+Listy indeksujemy od zera.
+Element i listy pobieramy przez lista[i]
+Elementy list można zmieniać, np.
+lista[2] = "Ola"
+lista[-1] - ostatni element listy
+
+Podlisty
+lista[i:j] = lista od i-tego do (j-1) elementu
+Uwaga.Reprezentując lista[i:j] Python tworzy kopię listy. 
+
+lista.append(element) - dodaje element na końcu listy
+lista.extend(inna_lista), lista += inna_lista dodają na koniec lista
+                                   listę inna_lista
+                                   lub dowolny obiekt iterowalny.
+lista1+lista2 łączy dwie listy (konkatenuje).
+
+lista.remove(elem) usuwa pierwsze wystąpienie elem na lista.
+Uwaga. Jeśli elem nie występuje w lista mamy błąd.
+lista.pop(index) usuwa element o indeksie index
+
+"elem in lista" sprawdza, czy element jest na liście.
+
+Jest wiele metod działających na listach. 
+Warto je przejrzeć. 
+
+2. n-tka uporządkowana
+
+Tworzymy ją np. x=(1,2,3)
+albo x = tuple(lista).
+np. x = tuple("Ala ma kota")
+
+Uwaga. Elementów n-tek nie można modyfikować!
+x = (1,2,3)
+x[1] = 4 generuje błąd
+
+3. Zbiory
 
 3. Ciąg znaków, String
 
