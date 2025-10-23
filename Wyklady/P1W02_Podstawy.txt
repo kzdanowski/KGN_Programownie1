@@ -105,6 +105,12 @@ instrukcjami:
 break - zakończ wykonywanie pętli,
 continue - zakończ aktualną iterację pętli i skocz do jej początku.     
 
+Przykład:
+ for i in range(0,10):
+        if i == 3: continue
+        print(i)
+        if i == 6: break
+
 
 
 
