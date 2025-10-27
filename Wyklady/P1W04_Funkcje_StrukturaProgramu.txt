@@ -1,1 +1,35 @@
+Programowanie 1, Wykład 04
+Funkcje, argumenty, zmienne globalne, zmienne lokalne, struktura programu
+
+Funkcja to ciąg instrukcji, który wykonuje się jako jeden blok.
+Funkcja może przyjmować argumenty, od której zależy jej działanie 
+oraz zwracać wartość.
+
+Funkcję w Pythonie definiujemy jako:
+
+def nazwa_funkcji(ciąg_argumentów):
+"""Opcjonalny opis funkcji"""
+    Cialo_Funkcji
+
+def - słowo kluczowe, informuje o definiowaniu funkcji
+ciąg_argumentów - w tym miejscu wprowadzamy zmienne, które będą nam służyć
+                  do przekazywania informacji (wartości) do funkcji,
+                  może być pusty.
+Opcjonalny opis funkcji - tutaj znajduje się opis funkcji, nie musimy go
+                          wpisywać.
+Cialo_Funkcji - wpisujemy z wcięciem 4 spacji,
+
+Funkcje otrzymują własne środowisko wykonywania obliczeń,
+z własnymi zmiennymi lokalnymi. Mogą też korzystać ze zmiennych globalnych programu.
+Funkcje mogą też zwracać wartości przez "return".
+
+Przykład.
+def square(n):
+    return n*n
+Funkcję taką możemy wywołać z różnymi argumentami
+a także z argumentem będącym wartością zwróconą przez funkcję,
+np. 
+square(square(2)) 
+zwróci wartość 16.
+
 
