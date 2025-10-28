@@ -2,6 +2,7 @@ Programowanie 1, Wykład 04
 Funkcje, argumenty, zmienne globalne, zmienne lokalne, struktura programu
 
 1. Funkcje
+1.1 Podstawy funkcji
 
 Funkcja to ciąg instrukcji, który wykonuje się jako jeden blok.
 Funkcja może przyjmować argumenty, od której zależy jej działanie 
@@ -41,6 +42,8 @@ zwróci wartość 16.
 square(2) to argument aktualny w square(square(2)) 
 n to argument formalny w definicji funkcji square
 
+1.2 Argumenty funkcji
+
 Argumenty funkcji mogą otrzymać wartości domyślne.
 Jeśli pominiemy je podczas wywołania funkcji, to przyjmą one 
 wartości domyślne.
@@ -65,4 +68,51 @@ wiele_argumentow(arg2 = 3, arg1 = 5)
 Możemy też użyć nazw tylko części argumentów, ale wtedy argumenty
 pozycyjne muszą wystąpić przed argumentami, do których odnieśliśmy 
 się przez nazwę.
-wiele_argumentow(1, arg3=8)
+wiele_argumentow(1, arg3 = 8)
+
+1.3 Nieokreślona ilość argumentów 
+
+Czasem funkcja może przyjąć nieokreśloną ilość argumentów,
+jak np. funkcja print. 
+print(1, 2, 3, "Ala", [1,2,3], 8)
+
+Definiując taką funkcję używamy argumentu z '*'.
+
+Przykład (za [1], str. 127)
+def greeter(*args):
+    for name in args:
+        print('Welcome', name)
+
+>> greeter('John', 'Denise', 'Phoebe', 'Adam', 'Gryff', 'Jasmine')
+Welcome John
+Welcome Denise
+Welcome Phoebe
+Welcome Adam
+Welcome Gryff
+Welcome Jasmine
+
+Możemy też odwołać się do argumentów nazwanych, za pomocą '**'.
+
+Przykład (za [1], str. 128)
+def my_function(*args, **kwargs):
+    for arg in args:
+        print('arg:', arg)
+    for key in kwargs.keys():
+        print('key:', key, 'has value: ', kwargs[key])
+
+>> my_function('John', 'Denise', daughter='Phoebe', son='Adam')
+>> print('-' * 50)
+>> my_function('Paul', 'Fiona', son_number_one='Andrew',
+son_number_two='James', daughter='Joselyn')
+Wynik:
+arg: John
+arg: Denise
+key: son has value: Adam
+key: daughter has value: Phoebe
+--------------------------------------------------
+arg: Paul
+arg: Fiona
+key: son_number_one has value: Andrew
+key: son_number_two has value: James
+key: daughter has value: Joselyn
+
