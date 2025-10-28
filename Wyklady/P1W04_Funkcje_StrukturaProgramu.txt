@@ -1,6 +1,8 @@
 Programowanie 1, Wykład 04
 Funkcje, argumenty, zmienne globalne, zmienne lokalne, struktura programu
 
+1. Funkcje
+
 Funkcja to ciąg instrukcji, który wykonuje się jako jeden blok.
 Funkcja może przyjmować argumenty, od której zależy jej działanie 
 oraz zwracać wartość.
@@ -39,5 +41,28 @@ zwróci wartość 16.
 square(2) to argument aktualny w square(square(2)) 
 n to argument formalny w definicji funkcji square
 
+Argumenty funkcji mogą otrzymać wartości domyślne.
+Jeśli pominiemy je podczas wywołania funkcji, to przyjmą one 
+wartości domyślne.
+Argumenty takie muszą(!) wystąpić w deklaracji funkcji
+po argumentach bez wartości domyślnych.
+Przykład
+def wiele_argumentow(arg1, arg2 = 2, arg3 = 3):
+    print(f'Wartość arg1 = ", arg1)
+    print(f'Wartość arg2 = ", arg2)
+    print(f'Wartość arg3 = ", arg3)
 
+Co wypisze
+wiele_argumentow(5)
+wiele_argumentow(5,6)
 
+Argumenty aktualne możemy też podawać do funkcji używając
+nazw argumentów formalnych.
+Jest to przydatne, gdy lista argumentów jest długa.
+Przykład
+wiele_argumentow(arg2 = 3, arg1 = 5)
+
+Możemy też użyć nazw tylko części argumentów, ale wtedy argumenty
+pozycyjne muszą wystąpić przed argumentami, do których odnieśliśmy 
+się przez nazwę.
+wiele_argumentow(1, arg3=8)
