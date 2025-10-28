@@ -17,7 +17,10 @@ ciąg_argumentów - w tym miejscu wprowadzamy zmienne, które będą nam służy
                   może być pusty.
 Opcjonalny opis funkcji - tutaj znajduje się opis funkcji, nie musimy go
                           wpisywać.
-Cialo_Funkcji - wpisujemy z wcięciem 4 spacji,
+Cialo_Funkcji - wpisujemy z wcięciem 4 spacji.
+
+Argument formalny/parametr to ciąg zmiennych, które są wymienione w deklaracji funkcji.
+Argument aktualny, to argument, z którym funkcja jest wywoływana.
 
 Funkcje otrzymują własne środowisko wykonywania obliczeń,
 z własnymi zmiennymi lokalnymi. Mogą też korzystać ze zmiennych globalnych programu.
@@ -31,5 +34,10 @@ a także z argumentem będącym wartością zwróconą przez funkcję,
 np. 
 square(square(2)) 
 zwróci wartość 16.
+
+2 to argument aktualny w square(2)
+square(2) to argument aktualny w square(square(2)) 
+n to argument formalny w definicji funkcji square
+
 
 
