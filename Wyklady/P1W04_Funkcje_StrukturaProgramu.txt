@@ -116,3 +116,14 @@ key: son_number_one has value: Andrew
 key: son_number_two has value: James
 key: daughter has value: Joselyn
 
+2. Zmienne
+
+Zmienna przechowuje wartość.
+Ze zmienną wiążemy jej zasięg, tzn. miejsca w programie, 
+w których można się do danej zmiennej odwołać.
+
+Zmienne globalne to zmienne zadeklarowane na zerowym poziomie wcięcia.
+Ich zasięg to cały program, chyba że zostaną przysłonione zmienną lokalną
+o tej samej nazwie.
+
+
