@@ -126,4 +126,23 @@ Zmienne globalne to zmienne zadeklarowane na zerowym poziomie wcięcia.
 Ich zasięg to cały program, chyba że zostaną przysłonione zmienną lokalną
 o tej samej nazwie.
 
+Zmienne lokalne mają zasięg tylko w funkcji, w której zostały zadeklarowane.
+Poza nimi Python zgłosi błąd, jeśli spróbujemy ich użyć,
+o ile nie zrozumie tego użycia jako deklaracji nowej zmiennej.
+
+Ważne! W Pythonie deklaracja zmiennej następuje w chwili jej pierwszego użycia.
+Jeśli popełnimy literówkę w nazwie zmienne, Python potraktuje to jako 
+deklarację nowej zmiennej.
+
+Ważne!
+Jeśli w funkcji odczytujemy wartość zmiennej globalnej, to interpreter się do niej odwoła,
+jeśli nie istnieje zmienna lokalna o tej samej nazwie.
+Jeśli w Pythonie zmieniamy w funkcji wartość zmiennej globalnej, to musimy zaznaczyć 
+w funkcji, że będziemy tak używać zmiennej globalnej przez:
+global zmienna_globalna
+Inaczej Python utworzy zmienną lokalną o tej samej nazwie!
+
+Z zasięgiem zmiennej jest związany też czas życia zmiennej.
+Zmienna istnieje w pamięci tylko wtedy, gdy jest wykonywany kod, 
+w którego zasięgu występuje.
 
