@@ -1,1 +1,34 @@
+1. Napisz funkcję, pole_prostokata(podstawa, wysokosc),
+która zwróci pole prostokąta o podanych wartościach podstawy 
+i wysokości.
+Następnie zmodyfikuj tę funkcję tak, żeby wysokość miała
+wartość domyślną równą 1.
 
+2. Napisz funkcję pole_prostopadloscianu(podstawa1, podstawa2, wysokosc),
+gdzie podstawa1 i podstawa2 to dlugości boków podstawy a wysokosc
+to wysokość prostopadłościanu. 
+Wykorzystaj funkcję z poprzedniego zadania.
+
+3. Zadeklaruj zmienną globalną liczba_wywolan i zainicjuj ją wartością zero.
+Następnie napisz funkcję 
+
+4. Napisz funkcję, która dla zadanej liczby n, zwróci
+listę wszystkich liczb od 1 do n-1, które są względnie pierwsze z n.
+
+5. Napisz funkcję pierwsza(n), która zwróci 1 gdy n jest pierwsza
+i 0 w przeciwnym przypadku.
+
+6. Napisz funkcję, która sprawdzi, czy ciąg znaków str jest palindromem.
+Pamiętaj o funkcji len(str) oraz co znaczy instrukcja str[-1].
+
+7. Napisz funkcję zamien_wielkosc(str), która w ciągu znaków str
+zamieni wszystkie duże litery na małe i odwrotnie a pozostałe
+znaki pozostawi bez zmian.
+Przydadzą Ci się funkcje znak.islower(), znak.isupper(), 
+znak.lower() i znak.upper(), gdzie znak to pojedyńczy znak napisu str.
+
+8. Zaimplementu szyfr Cezara w funkcji cezar(str, n).
+Szyfr Cezara polega na dodaniu do każdego znaku pewnej ustalonej 
+liczby n, modulo ilość liczb alfabetu.
+Funkcja ord(znak) oblicza numer znaku znak w kodzie ASCII,
+funkcja chr(n) zwraca znak, który ma dany numer.
