@@ -146,3 +146,7 @@ Z zasięgiem zmiennej jest związany też czas życia zmiennej.
 Zmienna istnieje w pamięci tylko wtedy, gdy jest wykonywany kod, 
 w którego zasięgu występuje.
 
+Jak Python szuka zmiennej?
+
+
+
