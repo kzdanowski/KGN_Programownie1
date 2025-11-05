@@ -1,0 +1,23 @@
+Za ChatGPT
+
+1. Zbuduj słownik z ciągu znaków.
+Masz string: "a=1;b=2;c=3".
+Zamień go na słownik: {'a': 1, 'b': 2, 'c': 3}.
+
+Podpowiedź: split(';'), potem split('=')
+
+2. Liczenie wystąpień słów
+Napisz program, który z tekstu użytkownika tworzy słownik 
+z liczbą wystąpień każdego słowa.
+
+Przykład wejścia: "ala ma kota ala"
+Wynik: {'ala': 2, 'ma': 1, 'kota': 1}
+
+3. Słownik list (grupowanie danych)
+Masz listę par:
+dane = [("Warszawa", "Anna"), ("Kraków", "Piotr"), ("Warszawa", "Ola")]
+
+Napisz kod, który zbuduje słownik:
+{"Warszawa": ["Anna", "Ola"], "Kraków": ["Piotr"]}
+
+👉 Przyda się setdefault() lub defaultdict.
