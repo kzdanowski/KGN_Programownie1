@@ -105,7 +105,7 @@ dict_values(['hau', 'miau', 'kukuryku', 2])
 Możemy też tak stworzyć słownik:
 >>> d = dict(pies='hau', kot='miau', kogut='kukuryku')
 
-Podstawowe operacje:
+3.2 Podstawowe operacje i metody
 len(d)
 d[key]
 d[key] = val - przypisuje wartość kluczowi key
@@ -116,6 +116,56 @@ Co może być kluczem?
 Wartość dla której można obliczyć skrót. Np. wartość niemutowalna.
 Jeśli key not in dict,
 to dict[key] generuje błąd.
+
+Metody słownikowe
+
+d = {'key':'value'}
+
+d.clear()
+
+>>> x = {}
+>>> y = x
+>>> x['key'] = 'value'
+>>> y
+{'key': 'value'}
+>>> x = {}
+>>> y
+{'key': 'value'}
+
+---------------------------
+
+>>> x = {}
+>>> y = x
+>>> x['key'] = 'value'
+>>> y
+{'key': 'value'}
+>>> x.clear()
+>>> y
+{}
+
+d.copy() - tworzy "płytką" kopię d
+
+>>> x = {'username': 'admin', 'machines': ['foo', 'bar', 'baz']}
+>>> y = x.copy()
+>>> y['username'] = 'mlh'
+>>> y['machines'].remove('bar')
+>>> y
+
+{'username': 'mlh', 'machines': ['foo', 'baz']}
+>>> x
+{'username': 'admin', 'machines': ['foo', 'baz']}
+
+>>> from copy import deepcopy
+>>> dc = deepcopy(d)
+
+d.get("key") lub d.get("key", "ReturnNoValue")
+d.item() - zwraca listę par (klucz, wartość)
+
+d.setdefault("key", default_value)
+
+d1.update(d2)      
+
+
 
 
 
