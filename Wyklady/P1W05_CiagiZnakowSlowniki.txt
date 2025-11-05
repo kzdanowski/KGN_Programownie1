@@ -1,1 +1,130 @@
+1. Ciągi znaków - stringi
+
+Ciągi znaków nie są "mutowalne", nie można ich zmieniać.
+Przy zmianie Python tworzy nowy ciąg znaków.
+
+Tworzymy używając cudzysłowów: " lub '.
+Zob.: "Ala czyta 'Nad Niemnem' nad Niemnem"
+      'Ala czyta "Nad Niemnem" nad Niemnem'
+
+Znaki specjalne możemy zapisać używając "\".
+Np. 'Ala czyta \'Nad Niemnem\' nad Niemnem.'
+
+Ukośnik wsteczny (backslash) wpisujemy '\\'
+
+Znak nowej linii: \n 
+
+1.1 Jak możemy formatować/zapisywać ciągi znaków.
+
+Tryby: r, f.
+
+Jeśli nie chcemy wpisywać wielu \ możemy użyć
+trybu surowego. To przydaje się gdy np. wpisujemy 
+nazwy katalogów.
+Zamiast "C:\\Users\\k.zdanowski\\Documents\\"
+piszemy r"C:\Users\k.zdanowski\Documents\".
+
+f"Ciąg znaków z parametrem liczbowym {2.34 + 4.3}"
+
+Jest też tryb rf.
+
+1.2 Funkcje na ciągach znaków vs. metody.
+
+Funkcje biorą jako argument ciąg znaków i zwracają wartość.
+Metody mogą zmienić ciąg znaków na inny (ale nie muszą).
+
+Funkcje wywołujemy przez f(argument).
+Metody wywołujemy przez obiekt.metoda(argumenty).
+Wtedy metoda ma dostęp do obiektu, który ją wywołał.
+
+str.split(znak) - dzieli ciąg znaków 
+>>> str = "ala ma kota"
+>>> str.split()
+['ala', 'ma', 'kota']
+>>> str.split('a')
+['', 'l', ' m', ' kot', '']
+>>> str = "Ala ma kota"
+>>> str.split('a')
+['Al', ' m', ' kot', '']
+
+>>> "".join(str.split('a'))
+'Al m kot'
+>>> "a".join(str.split('a'))
+'Ala ma kota'
+
+str.count(x) - liczy ilość wystąpień x w str
+
+>>> "aaaaa".count("aa")
+2
+
+str.replace(str1, str2)
+
+str.find(str1) - zwraca pozycję lub -1
+
+str.upper()
+str.lower()
+str.title()
+str.swapcase()
+str.strip("znak")
+str.isupper()
+str.islower()
+
+str.encode('ASCII')
+str.encode("UTF-16")
+str.encode("UTF-32")
+
+2. Zbiory
+
+
+3. Słowniki (dictionaries)
+
+Słowniki to stuktury, w których dane uporządkowane są według 
+zależności klucz->wartość
+Możemy myśleć o słowniku jako o funkcji, która dla argumentu klucz
+zwraca wartość.
+Funkcja ta nie musi być różnowartościowa.
+
+Słowniki możemy tworzyć przez wypisanie ich:
+>>> animals ={'pies':'hau', 'kot':'miau', 'kogut':'kukuryku', 1:2}
+>>> animals[1]
+2
+>>> animals['pies']
+'hau'
+>>> animals.keys()
+dict_keys(['pies', 'kot', 'kogut', 1])
+>>> for i in animals.keys():
+...     print(i)
+...
+pies
+kot
+kogut
+1
+>>> animals.values()
+dict_values(['hau', 'miau', 'kukuryku', 2])
+
+Możemy też tak stworzyć słownik:
+>>> d = dict(pies='hau', kot='miau', kogut='kukuryku')
+
+Podstawowe operacje:
+len(d)
+d[key]
+d[key] = val - przypisuje wartość kluczowi key
+del d[key] - usuwa parę z kluczem key
+key in d - czy key jest kluczem w d
+
+Co może być kluczem?
+Wartość dla której można obliczyć skrót. Np. wartość niemutowalna.
+Jeśli key not in dict,
+to dict[key] generuje błąd.
+
+
+
+
+
+
+
+
+
+
+
 
