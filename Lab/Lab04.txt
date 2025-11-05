@@ -10,10 +10,13 @@ to wysokość prostopadłościanu.
 Wykorzystaj funkcję z poprzedniego zadania.
 
 3. Zadeklaruj zmienną globalną liczba_wywolan i zainicjuj ją wartością zero.
-Następnie napisz funkcję 
+Następnie napisz funkcję, która podczas każdego wywołania
+będzie zwiększała wartość tej liczby o 1.
+Wywołaj tę funkcję 4 razy i sprawdź wartość liczba_wywolan.
 
 4. Napisz funkcję, która dla zadanej liczby n, zwróci
 listę wszystkich liczb od 1 do n-1, które są względnie pierwsze z n.
+Wykorzystaj np. metodę sita Eratostenesa.
 
 5. Napisz funkcję pierwsza(n), która zwróci 1 gdy n jest pierwsza
 i 0 w przeciwnym przypadku.
