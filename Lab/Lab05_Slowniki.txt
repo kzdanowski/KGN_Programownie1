@@ -10,7 +10,7 @@ Podpowiedź: split(';'), potem split('=')
 Napisz program, który z tekstu użytkownika tworzy słownik 
 z liczbą wystąpień każdego słowa.
 
-Przykład wejścia: "ala ma kota ala"
+Przykład wejścia: "Ala ma kota ala"
 Wynik: {'ala': 2, 'ma': 1, 'kota': 1}
 
 3. Słownik list (grupowanie danych)
