@@ -1,0 +1,39 @@
+Wykład 6. Rekurencja
+
+Rekurencja to sposób rozwiązywania problemu
+gdzie podajemy jak rozwiązać przypadki bazowe
+a rozwiązania pozostałych przypadków redukujemy do
+rozwiązań przypadków bazowych.
+
+Rekurencja to także sposób tworzenia programów/funkcji,
+które korzystają z tej techniki.
+
+Przykład.
+Obliczanie silni.
+silnia(n) = n*(n-1)*(n-2)*...*2*1
+Możemy obliczyć wartość silni w pęli.
+def silnia_loop(n:int)->int:
+    silnia = 1
+    for i in range(2,n+1):
+        silnia *=i
+    return silnia
+
+Ale możemy też obliczyć silnię korzystając
+z rekurencyjnej zależności:
+silnia(0)=1
+silnia(n+1)= (n+1)*silnia(n)
+
+W programie rekurencyjnym rozwiązujemy najpierw przypadki bazowe,
+potem przypadki wymagające rekurencji.
+def silnia_rec(n):
+    print(f"Wyołanie silnia_rec({n})")
+    if n == 0:
+        print(f"Koniec wywołania silnia({n}), zwracana wartość: {1}")
+        return 1
+    val =  n*silnia(n-1)
+    print(f"Koniec wywołania silnia({n}), zwracana wartość: {val}")
+    return val
+
+
+
+
