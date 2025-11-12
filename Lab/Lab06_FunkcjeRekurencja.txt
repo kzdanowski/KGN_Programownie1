@@ -1,0 +1,56 @@
+Lab06, Funkcje, Rekurencja
+
+1. Napisz rekurencyjną funkcję suma_liczba(xl),
+która zwróci sumę liczb na liście xl.
+
+2. Napisz rekurencyjną funkcję suma_cyfr(n),
+która zwróci sumę cyfr dziesiętnego zapisu n.
+Napisz tę samą funkcję iteracyjnie.
+
+3. Napisz rekurencyjnie oraz iteracjnie
+funkcję jest_palindromem(s).
+
+4. Napisz rekurencyjnie oraz iteracyjnie funkcję,
+która odwróci ciąg znaków.
+
+5. Napisz funkcje, rekurencyjną oraz iteracyjną,
+liczące n-ty element ciągu Fibbonacciego:
+gdzie fibb(0)=fibb(1) = 1
+fibb(n+2) = fibb(n+1) + fibb(n).
+Napisz też funkcję rekurencyjną, która zapamiętuje otrzymane 
+do tej pory wartości w słowniku.
+Porównaj czasy działania naiwnej funkcji rekurencyjnej oraz 
+tej zapamiętującej obliczone wcześniej wartości.
+
+6. Napisz funkcję, która zwróci ilość elementów na zagnieżdżonej liście.
+Np. z argumentem postaci [1, [2,3], [1, [3]], 4]
+powinna zwrócić 6.
+Możesz użyć funkcji type(x) lub isinstance(x, typ).
+
+7. Zdefiniuj dwie funkcje:
+czy_parzysta(n), czy_nieparzysta(n),
+które będą się odwołowywały do siebie sprawdzając parzystość liczby.
+Zastanów się, co powinno być przypadkami bazowymi.
+
+8. Napisz funkcję permutacje(xl), która zwróci listę
+wszystkich permutacji listy xl.
+
+
+9. Napisz rekurencyjną funkcję potega(a,n),
+która obliczy a do potęgi n, korzystając
+z rekurencyjnej zależności:
+potega(a, 2*n) = potega(a,n)^2
+potega(a, 2*n+1) = a*potega(a,n)^2
+Porównaj, przy pomocy timeit, 
+czas działania tej funkcji 
+z czasem działania funkcji
+def potega_iter(a,n):
+    if n < 0:
+       return -1
+    wynik = 1
+    for i in range(n):
+        wynik *= a
+    return wynik
+
+
+      
