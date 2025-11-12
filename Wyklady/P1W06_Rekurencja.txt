@@ -7,6 +7,10 @@ rozwiązań przypadków bazowych.
 
 Rekurencja to także sposób tworzenia programów/funkcji,
 które korzystają z tej techniki.
+Programy rekurencyjne są czestso prostsze do zrozumienia
+i łatwiejsze do napisania.
+
+Rekurencja to bardzo silnia technika obliczeniowa.
 
 Przykład.
 Obliczanie silni.
@@ -27,13 +31,70 @@ W programie rekurencyjnym rozwiązujemy najpierw przypadki bazowe,
 potem przypadki wymagające rekurencji.
 def silnia_rec(n):
     print(f"Wyołanie silnia_rec({n})")
-    if n == 0:
+    if n <= 0:
         print(f"Koniec wywołania silnia({n}), zwracana wartość: {1}")
         return 1
-    val =  n*silnia(n-1)
+    val =  silnia(n-1)
     print(f"Koniec wywołania silnia({n}), zwracana wartość: {val}")
+    return n*val
+
+Co możemy zrobić źle podczas rekurencji?
+
+1. Możemy nie zaprogramować rozwiązania dla przypadków bazowych
+lub możemy umieścić je po przypadkach, które redukujemy.
+To może skutkować nie zakończeniem się wywołań rekurencyjnych.
+
+Np. 
+def silnia(n):
+    val = n*silnia(n-1)
+    if n <= 0:
+        val =  1
     return val
 
+2. Możemy nie zadbać o to, żeby przypadki zawsze redukowały się
+   do przypadków bazowych.
+Np.
+def silnia(n):
+    if n == 0:
+        return 1
+    val = silnia(n-1)
+    return n*val
+Jak zachowa się wywołanie silnia(-1)?
 
+Dlatego:
+1. Zawsze na początku rozwiązujemy przypadki bazowe.
+2. Pamiętamy, żeby zadbać o zakończenie wywołań rekurencyjnych.
 
+Jak realizuje się rekurencja?
+
+Gdy wywołujemy jedną funkcję w drugiej, np. funkcje g(3) i g(6)
+w f(5).
+def g(n):
+    return n+3
+
+def f():
+    k = g(3)
+    z = g(k)
+    return z+2
+
+System operacyjny zatrzymuje wykonywanie funkcji f(5) 
+i zaczyna wykonywać funkcję g(3).
+Gdy skończy obliczać g(3) wraca do funkcji f(5).
+Zawiesza jej działanie aby obliczyć g(6) 
+i znowu wraca i kończy obliczać f(5).
+
+Potrzebna do tego pamięć jest rezerwowana na stosie, na specjalnej strukturze w pamięci programu.
+
+Czy rekurencja jest efektywna?
+Obecnie rekurencja jest efektywna.
+Jednak mamy ograniczoną ilość wywołań rekurencyjnych z powodu rozmiaru pamięci stosu.
+Dlatego czasem możemy nie policzyć czegoś rekurencyjnie z tego powodu
+a możliwe jest policzenie tego w pętli.
+
+Czy rekurencja jest konieczna?
+Zawsze możemy zamienić program wykorzystujący rekurencję na program wykorzystujący dodatkową
+pamięć. 
+Ale jest to rozwiązanie trudniejsze, mniej czytelne.
+Z drugiej strony rekurencja jest często naturalnym sposobem programowania, np. podczas
+obsługi takich struktur jak drzewa, grafy, itp.
 
