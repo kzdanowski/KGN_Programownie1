@@ -147,6 +147,31 @@ Zmienna istnieje w pamięci tylko wtedy, gdy jest wykonywany kod,
 w którego zasięgu występuje.
 
 Jak Python szuka zmiennej?
+Zmiennej zadeklarowanej jako nonlocal Python szuka
+na coraz wyższych poziomach począwszy od poziomu,
+na którym została zadeklarowana funkcja, w której występuje 
+deklaracja: nonlocal zmienna.
+Zmiennej zadeklarowanej: global zmienna
+Python szuka wśród zmiennych globalnych, na najwyższym poziomie.
+
+
+3. W jaki sposób Python przekazuje argumenty do funkcji?
+Ważne!
+
+Sposób: call by object assigment, call by sharing
+Funkcja otrzymuje tzw. referencję do obiektu (można to rozumieć jako adres
+w pamięci obiektu, adres pod którym jest przechowywany argument).
+W samej funkcji obiekt ten zachowuje się inaczej gdy jest mutowalny,
+inaczej gdy jest niemutowalny.
+
+Jeśli obiekt jest niemutowalny, to to, co dzieje się z nim podczas wykonywania funkcji,
+nie wpływa na to, jaki jest poza funkcją.
+Jeśli obiekt jest mutowalny, to metody, które zmieniają obiekt w funkcji,
+wpływają na to, jaki będzie poza funkcją. 
+Bo metody te zmieniają obiekt, na który wskazuje referencja.
+
+Przykład. W04_PrzekazywanieArgumentow.py
+
 
 
 
