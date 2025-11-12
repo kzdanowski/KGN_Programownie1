@@ -39,11 +39,11 @@ def dn_rec(n,k):
 def dn_dict(n, k, obliczone_wartosci={}):
     print(f"Wywołanie dn_dict({n}, {k})")
     if (n,k) in obliczone_wartosci:
-        print(f"Koniec wywołania dn_dict({n}, {k}), "
-               f"wartość w słowniku {obliczone_wartosci[(n,k)]}")
+        print(f"Koniec wywołania dn_dict({n}, {k}), ", end="")
+        print(f"wartość w słowniku {obliczone_wartosci[(n,k)]}")
         return obliczone_wartosci[(n,k)]
     # przypadki nieprawidłowe
-    if n < k or n < 0 or k < 0:
+    if n<k or n<0 or k<0:
         return -1
     if k == 0 or n == k:
         obliczone_wartosci[(n,k)] = 1
@@ -52,7 +52,8 @@ def dn_dict(n, k, obliczone_wartosci={}):
     r1 = dn_dict(n-1, k, obliczone_wartosci)
     r2 = dn_dict(n-1, k-1, obliczone_wartosci)
     print(f"Koniec wywołania dn_dict({n}, {k}) = {r1+r2}")
-
+    obliczone_wartosci[(n,k)] = r1 + r2
+    return r1 + r2
 
 def max_rec_depth_counter(i):
     print(f"Recursion depth: {i}")
@@ -63,11 +64,12 @@ def max_rec_depth_counter(i):
 def main():
     print("Silnia")
     silnia_rec(5)
-    print("Dwumian Newtona dn(5,4)")
+    print("Dwumian Newtona dn(6,4)")
     print("Powtarzanie tych samych obliczeń")
-    dn_rec(5,4)
+    dn_rec(6,4)
     print("Dwumian Newtona przy pomocy słownika")
-    dn_dict(5,4)
+    dn_dict(6,4)
+    print("\n\n\n\n")
     max_rec_depth_counter(0)
 
 if __name__ == "__main__":
