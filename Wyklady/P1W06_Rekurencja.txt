@@ -81,7 +81,7 @@ Dlatego:
 Jak realizuje się rekurencja?
 
 Gdy wywołujemy jedną funkcję w drugiej, np. funkcje g(3) i g(6)
-w f(5).
+w f().
 def g(n):
     return n+3
 
