@@ -24,8 +24,12 @@ def silnia_loop(n:int)->int:
 
 Ale możemy też obliczyć silnię korzystając
 z rekurencyjnej zależności:
-silnia(0)=1
-silnia(n+1)= (n+1)*silnia(n)
+silnia(0) = 1                  #przypadek bazowy
+silnia(n+1) = (n+1)*silnia(n)  #przypadek rekurencyjny
+Wtedy, dla n>=1
+silnia(n+1) = (n+1)*silnia(n)
+            = (n+1)*n*silnia(n-1)
+            = (n+1)*n*(n-1)*...*1
 
 W programie rekurencyjnym rozwiązujemy najpierw przypadki bazowe,
 potem przypadki wymagające rekurencji.
@@ -37,6 +41,11 @@ def silnia_rec(n):
     val =  silnia(n-1)
     print(f"Koniec wywołania silnia({n}), zwracana wartość: {val}")
     return n*val
+
+def silnia_rec_krotko(n):
+    if n <= 0: return 1
+    return n*silnia(n-1)
+
 
 Co możemy zrobić źle podczas rekurencji?
 
@@ -60,6 +69,10 @@ def silnia(n):
     val = silnia(n-1)
     return n*val
 Jak zachowa się wywołanie silnia(-1)?
+Tutaj, przypadkiem bazowym jest tylko wartość n == 0.
+Wartości ujemne n nie są bazowe i nie redukują się do bazowych.
+Ta funckcja dla wartości ujemnych nie zatrzyma się
+choć przypadki bazowe są rozwiązywane na początku.
 
 Dlatego:
 1. Zawsze na początku rozwiązujemy przypadki bazowe.
