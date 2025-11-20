@@ -11,6 +11,8 @@ Korzyści z klas.
 
 Definicja klasy.
 class NazwaKlasy(SuperKlasa):
+    """Komentarz, 
+       opis klasy"""
     __init__ - funkcja tworząca obiekt klasy
     artybuty klasowe
     metody
@@ -21,4 +23,29 @@ takiej jak nazwa klasy.
 Do pól klasy odwołujemy się przez kropkę:
 obiekt.nazwa_pola
 
-Kopiując klase
+Kopiując obiekty klasy kopiujemy adres do miejsca w pamięci,
+czyli referencję do obiektu.
+
+Atrybuty klasy.
+__name__  - nazwa klasy
+__module__ - moduł
+__bases__ - klasy bazowe
+__doc__ - dokumentacja
+
+Atrybuty obiektu
+__dict__
+__class__
+
+Zmienne klasowe 
+definiowane wewnątrz klasy,
+istnieje jedna taka zmienna dla wszystkich obiektów.
+
+Metody klasy - oznaczone przez @classmethod
+Wywoływane przez zmienna.nazwaMetody
+
+Metody statyczne  - oznaczone przez @staticmethod
+Wywoływane przez NazwaKlasy.nazwaMetody
+Nie przyjmują argumentu self ani cls.
+
+
+
