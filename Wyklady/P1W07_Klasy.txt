@@ -1,2 +1,24 @@
 Klasy/Obiekty w Pythonie
 
+Co to jest klasa? 
+Typ danych. Udostępnia dane oraz metody.
+W Pythonie wszystko jest klasą: int, float, ...
+Użytkownik może definiować swoje klasy.
+
+Korzyści z klas.
+1. Hermetyzacja (ang. encapsulation).
+2. Polimorfizm.
+
+Definicja klasy.
+class NazwaKlasy(SuperKlasa):
+    __init__ - funkcja tworząca obiekt klasy
+    artybuty klasowe
+    metody
+
+Gdy definiujemy klasę często robimy to w pliku o nazwie 
+takiej jak nazwa klasy.
+
+Do pól klasy odwołujemy się przez kropkę:
+obiekt.nazwa_pola
+
+Kopiując klase
