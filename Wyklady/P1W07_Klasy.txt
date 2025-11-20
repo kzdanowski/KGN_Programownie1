@@ -22,6 +22,7 @@ takiej jak nazwa klasy.
 
 Do pól klasy odwołujemy się przez kropkę:
 obiekt.nazwa_pola
+Klasa.nazwa_pola
 
 Kopiując obiekty klasy kopiujemy adres do miejsca w pamięci,
 czyli referencję do obiektu.
