@@ -56,5 +56,13 @@ Nie przyjmują argumentu self ani cls.
 -----------------------------------------
 del - zwalnia pamięć z obiektu klasy
 
+-------------------------------------------------
+Przykład. 
+Iteratory
+
+Iterator to obiekt, który reprezentuje sekwencję/ciąg elementów,
+który można użyć w pętli for.
+Np. map((lambda x: x+1), [1,2,3])
+
 
 
