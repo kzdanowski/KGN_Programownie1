@@ -13,7 +13,8 @@ Definicja klasy.
 class NazwaKlasy(SuperKlasa):
     """Komentarz, 
        opis klasy"""
-    __init__ - funkcja tworząca obiekt klasy
+    def __init__(self, parametry) - funkcja tworząca obiekt klasy
+    def __str__(self): - funkcja tworząca reprezentację obiektu jako str.
     artybuty klasowe
     metody
 
@@ -29,13 +30,15 @@ czyli referencję do obiektu.
 
 Atrybuty klasy.
 __name__  - nazwa klasy
-__module__ - moduł
+__module__ - moduł klasy
 __bases__ - klasy bazowe
 __doc__ - dokumentacja
+__dict__ - artybuty klasy
+
 
 Atrybuty obiektu
-__dict__
-__class__
+__dict__ - atrybuty obiektu i ich wartości
+__class__ - klasa danego obiektu
 
 Zmienne klasowe 
 definiowane wewnątrz klasy,
@@ -47,6 +50,11 @@ Wywoływane przez zmienna.nazwaMetody
 Metody statyczne  - oznaczone przez @staticmethod
 Wywoływane przez NazwaKlasy.nazwaMetody
 Nie przyjmują argumentu self ani cls.
+
+
+
+-----------------------------------------
+del - zwalnia pamięć z obiektu klasy
 
 
 
