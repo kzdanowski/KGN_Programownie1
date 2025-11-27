@@ -51,6 +51,42 @@ Metody statyczne  - oznaczone przez @staticmethod
 Wywoływane przez NazwaKlasy.nazwaMetody
 Nie przyjmują argumentu self ani cls.
 
+2. Dziedziczenie
+
+class Podklasa(Superklasa):
+    def __init__(self, param):
+       super().__init__(param)
+       ......
+Obiekty podklasy dziedziczą atrybuty i metody
+superklasy.
+Można zmieniać metody superklasy.
+
+Wszystkie klasy dziedziczą po klasie object.
+Klasa ta udostępnia
+
+3.  Przeciążanie operatorów
+
+
+q1 < q2 -> __lt__(q1, q2)
+q1 <= q2  -> __le__(q1, q2)
+q1 == q2  -> __eq__(q1, q2)
+q1 != q2  -> __ne__(q1, q2)
+q1 > q2  -> __gt__(q1, q2)
+q1 >= q2  -> __ge__(q1, q2)
+
+q1 + q2  ->  __add__(self, q2)
+q1 – q2  -> __sub__(self, q2)
+q1 * q2  -> __mul__(self, q2)
+q1 ** q2  -> __pow__(self, q2)
+q1 / q2  -> __truediv__(self, q2)
+q1 // q2 -> __floordiv__(self, q2)
+
+
+
+
+Każda klasa dziedziczy po object.
+Klasa object posiada 
+
 
 
 -----------------------------------------
