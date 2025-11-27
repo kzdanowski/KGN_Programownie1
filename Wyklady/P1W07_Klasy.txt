@@ -61,8 +61,11 @@ Obiekty podklasy dziedziczą atrybuty i metody
 superklasy.
 Można zmieniać metody superklasy.
 
-Wszystkie klasy dziedziczą po klasie object.
-Klasa ta udostępnia
+Każda klasa dziedziczy po object.
+Klasa object posiada artybuty:
+__class__, __dict__, __doc__, __module__
+oraz metody:
+__str__(), __init()__, __eq__(),  __hash__().
 
 3.  Przeciążanie operatorów
 
@@ -85,7 +88,10 @@ q1 // q2 -> __floordiv__(self, q2)
 
 
 Każda klasa dziedziczy po object.
-Klasa object posiada 
+Klasa object posiada artybuty:
+__class__, __dict__, __doc__, __module__
+oraz metody:
+__str__(), __init()__, __eq__(),  __hash__().
 
 
 
@@ -93,12 +99,7 @@ Klasa object posiada
 del - zwalnia pamięć z obiektu klasy
 
 -------------------------------------------------
-Przykład. 
-Iteratory
 
-Iterator to obiekt, który reprezentuje sekwencję/ciąg elementów,
-który można użyć w pętli for.
-Np. map((lambda x: x+1), [1,2,3])
 
 
 
