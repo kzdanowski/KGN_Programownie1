@@ -56,10 +56,10 @@ definiowane wewnątrz klasy,
 istnieje jedna taka zmienna dla wszystkich obiektów.
 
 Metody klasy - oznaczone przez @classmethod
-Wywoływane przez zmienna.nazwaMetody
+Wywoływane przez zmienna.nazwaMetody lub NazwaKlasy.nazwaMetody
 
 Metody statyczne  - oznaczone przez @staticmethod
-Wywoływane przez NazwaKlasy.nazwaMetody
+Wywoływane przez NazwaKlasy.nazwaMetody lub zmienna.nazwaMetody
 Nie przyjmują argumentu self ani cls.
 
 2. Dziedziczenie
@@ -77,6 +77,8 @@ Klasa object posiada artybuty:
 __class__, __dict__, __doc__, __module__
 oraz metody:
 __str__(), __init()__, __eq__(),  __hash__().
+
+Przykład w pliku W07_Obiekty.py i omówienie tam.
 
 3.  Przeciążanie operatorów
 
