@@ -16,6 +16,7 @@ try:
 except:
    ta część programu obsługuje wyjątek
    może wystąpić wiele części except dla obsługi różnych wyjątków
+   wykonają się instrukcje po najwyżej jednej except
 else:
    ta część kodu wykona się, jeśli nie pojawił się wyjątek
 finally:
@@ -41,5 +42,19 @@ def obsluga2(x):
 
 Klasa Exception jest nadklasą ZeroDivisionError więc też obsłuży 
 ten wyjątek.
+def obsluga3(x):
+    try:
+        div_by_zero(x)
+    except ZeroDivisionError:
+        print("Nie można dzielic przez zero")
+    except Exception:
+        print("Zgłoszono wyjątek")
+Kolejność wyjątków w except jest ważna.
+
+Wyjątek to obiekt. Możemy się do niego odwołać
+w except przez
+except NazwaWyjatku as exp:
+    obsługa
+
 
 
