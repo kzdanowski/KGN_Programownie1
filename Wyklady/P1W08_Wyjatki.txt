@@ -51,10 +51,21 @@ def obsluga3(x):
         print("Zgłoszono wyjątek")
 Kolejność wyjątków w except jest ważna.
 
+Ostatnie except może być bez nazwy wyjątku. Obsłuży wtedy każdy wyjątek.
+
 Wyjątek to obiekt. Możemy się do niego odwołać
 w except przez
 except NazwaWyjatku as exp:
     obsługa
+
+Zgłoszenie wyjątku przerywa wykonanie programu.
+Następuje skok do miejsca, gdzie wyjątek może być obsłużony.
+Po obsludze wyjatku sterowanie nie wraca do miejsca,
+gdzie wrzucono wyjątek.
+
+Podczas obsługi wyjątku można go zgłosić wyżej
+instrukcją raise.
+
 
 
 
