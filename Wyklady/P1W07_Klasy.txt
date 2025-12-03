@@ -113,6 +113,33 @@ del - zwalnia pamięć z obiektu klasy
 
 -------------------------------------------------
 
+Prywatne atrybuty/metody klasy.
+Nazwy takich atrybutów zaczynają się od podkreślenia.
+Jest to tylko konwencja, ale bardzo silnie przestrzegana.
+
+class Example:
+    def __init__(self):
+        self._value = 42  # atrybut "chroniony"
+
+obj = Example()
+print(obj._value)  # działa, choć nie zalecane
+
+
+Nazwy zaczynające się od podwójnego podkreślenia 
+Python zmienia na:
+__nazwa -> _NazwaKlasy__nazwa
+
+To zachowuje się przy dziedziczeniu.
+class A:
+    def __init__(self):
+        self.__x = 1
+
+class B(A):
+    def __init__(self):
+        super().__init__()
+        self.__x = 2  # to inny atrybut niż __x z A!
+Klasa B ma dwa atrybuty:
+_A__x oraz _b__x !
 
 
 
