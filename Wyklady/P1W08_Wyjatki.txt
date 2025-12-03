@@ -1,0 +1,45 @@
+Wyjątki, błędy, sterowanie programem
+
+Wyjątek wrzuca do programu instrukcja, której wykonanie najczęściej 
+zakończyło się w nietypowy sposób, np. nie znaleziono poszukiwanego
+pliku, który chcieliśmy otworzyć albo próbowaliśmy wykonać operację
+niezaimplementowaną w programie, np. "Ala" + 3, 3/0, ...
+
+Wrzucone wyjątki możemy przechwytywać, żeby je obsłużyć, czyli określić,
+co program ma zrobić.
+Wyjątki przechwytujemy w procedurze obsługi wyjątku.
+
+Struktura programu z obsługą wyjątków.
+
+try:
+   ta część programu może zgłosić wyjątek
+except:
+   ta część programu obsługuje wyjątek
+   może wystąpić wiele części except dla obsługi różnych wyjątków
+else:
+   ta część kodu wykona się, jeśli nie pojawił się wyjątek
+finally:
+   ta część kodu wykona się po zakończeniu bloku try
+   tutaj można np. zwolnić użytkowane zasoby, pliki itp.
+
+
+
+def div_by_zero(x):
+    return x/0
+
+def obsluga1(x):
+    try:
+        div_by_zero(x)
+    except ZeroDivisionError:
+        print("Nie można dzielić przez zero")
+
+def obsluga2(x):
+    try:
+        div_by_zero(x)
+    except Exception:
+        print("Zgłoszono wyjątek")
+
+Klasa Exception jest nadklasą ZeroDivisionError więc też obsłuży 
+ten wyjątek.
+
+
