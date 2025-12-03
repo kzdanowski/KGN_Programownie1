@@ -1,0 +1,123 @@
+Zadania ChatGPT
+
+#  **Ćwiczenia podstawowe**
+
+### **1. Odczytywanie liczby z inputu**
+
+Napisz program, który:
+
+* pobiera liczbę od użytkownika,
+* przechwytuje `ValueError`, jeśli użytkownik poda tekst,
+* w przypadku błędu prosi o ponowne podanie wartości.
+
+---
+
+### **2. Dzielenie dwóch liczb**
+
+Napisz funkcję, która:
+
+* pobiera dwie liczby,
+* wykonuje dzielenie,
+* obsługuje `ZeroDivisionError`,
+* obsługuje `ValueError` (gdy dane z inputu są niepoprawne).
+
+---
+
+### **3. Lista i indeks**
+
+Napisz funkcję, która:
+
+* ma listę np. `[10, 20, 30]`,
+* prosi użytkownika o indeks,
+* przechwytuje `IndexError`,
+* w przypadku błędu wypisuje informację i kończy działanie.
+
+---
+
+#  **Ćwiczenia średnio zaawansowane**
+
+### **4. Obliczanie pierwiastka**
+
+Napisz funkcję, która:
+
+* pobiera liczbę,
+* gdy liczba jest ujemna, zgłasza własny wyjątek `NegativeNumberError`,
+* obsługuje błąd i wypisuje odpowiedni komunikat.
+
+---
+
+### **5. Walidacja danych wejściowych**
+
+Napisz funkcję `validate_user(user_dict)`, która:
+
+* przyjmuje słownik np. `{"name": "Ala", "age": 20}`,
+* zgłasza `KeyError`, jeśli brakuje pola,
+* zgłasza `ValueError`, jeśli wiek jest mniejszy niż 0 lub większy niż 120,
+* obsługuje wyjątki w bloku `try/except`.
+
+---
+
+### **6. Wczytywanie pliku**
+
+Napisz program, który:
+
+* próbuje otworzyć plik, którego nazwa pochodzi z inputu,
+* przechwytuje `FileNotFoundError`,
+* wyświetla treść, jeśli plik istnieje.
+
+---
+
+#  **Ćwiczenia trudniejsze (z własnymi wyjątkami)**
+
+### **7. Klasa z walidacją**
+
+Stwórz klasę `Account`, która:
+
+* posiada prywatny balans (`__balance`),
+* w metodzie `withdraw(amount)`:
+
+  * zgłasza `TypeError` gdy kwota nie jest liczbą,
+  * zgłasza `ValueError` gdy kwota ≤ 0,
+  * zgłasza własny wyjątek `NotEnoughFundsError` gdy saldo niewystarczające.
+
+---
+
+### **8. Złożony system obsługi błędów**
+
+Napisz funkcję `process_order(order)`:
+
+* sprawdza, czy `order` to słownik,
+* sprawdza, czy zawiera pola `"product"` i `"quantity"`,
+* jeśli ilość < 1 → zgłasza `InvalidQuantityError`,
+* jeśli produktu nie ma na liście dostępnych → `ProductNotFoundError`,
+* w bloku `try/except` przechwytuje błędy i tworzy komunikaty użytkownika.
+
+---
+
+### **9. Dekorator przechwytujący wyjątki**
+
+Napisz dekorator `safe_call`, który:
+
+* opakowuje dowolną funkcję,
+* jeśli funkcja rzuca wyjątek, dekorator:
+
+  * przechwytuje go,
+  * wypisuje komunikat,
+  * zwraca `None`.
+
+Użyj dekoratora z dwiema różnymi funkcjami.
+
+---
+
+#  **Ćwiczenie projektowe (najtrudniejsze)**
+
+### **10. Mini-aplikacja „kalkulator operacji”**
+
+Napisz program, który:
+
+1. Pobiera od użytkownika trzy wartości: a, b, operację (`+`, `-`, `*`, `/`).
+2. Waliduje dane.
+3. Dla `/` przechwytuje `ZeroDivisionError`.
+4. Własny wyjątek `UnsupportedOperationError`, jeśli operacja nie jest obsługiwana.
+5. Program działa w pętli, dopóki użytkownik nie wpisze `"exit"`.
+
