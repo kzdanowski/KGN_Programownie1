@@ -133,13 +133,15 @@ To zachowuje się przy dziedziczeniu.
 class A:
     def __init__(self):
         self.__x = 1
+        self.y = 2
 
 class B(A):
     def __init__(self):
         super().__init__()
         self.__x = 2  # to inny atrybut niż __x z A!
+        self.y = 3
 Klasa B ma dwa atrybuty:
-_A__x oraz _b__x !
+_A__x oraz _B__x !
 
 
 
