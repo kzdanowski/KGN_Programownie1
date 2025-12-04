@@ -12,7 +12,7 @@ Wyjątki przechwytujemy w procedurze obsługi wyjątku.
 Struktura programu z obsługą wyjątków.
 
 try:
-   ta część programu może zgłosić wyjątek
+   o tej części programu przewidujemy, że może zgłosić wyjątek
 except:
    ta część programu obsługuje wyjątek
    może wystąpić wiele części except dla obsługi różnych wyjątków
@@ -22,6 +22,10 @@ else:
 finally:
    ta część kodu wykona się po zakończeniu bloku try
    tutaj można np. zwolnić użytkowane zasoby, pliki itp.
+   ta część wykona się po except
+   ale jeśli wyjątek nie będzie tam obsłużony to ta częśc się wykona
+   a obsługa wyjątku może zdarzyć się wyżej w hierarchii programu
+
 
 
 
@@ -47,8 +51,11 @@ def obsluga3(x):
         div_by_zero(x)
     except ZeroDivisionError:
         print("Nie można dzielic przez zero")
-    except Exception:
-        print("Zgłoszono wyjątek")
+    except ArithmeticException:
+        print("Zgłoszono wyjątek arytmetyczny")
+    except:
+        print("Zgloszono jakiś wyjątek")
+
 Kolejność wyjątków w except jest ważna.
 
 Ostatnie except może być bez nazwy wyjątku. Obsłuży wtedy każdy wyjątek.
