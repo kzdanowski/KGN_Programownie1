@@ -285,6 +285,21 @@ zawartością.
 
 Moduł send2trash przenosi tylko pliki do kosza. Bezpieczniejsze.
 
+6. Tworzenie plików tymczasowych.
+
+fd, path = tempfile.mkstemp(suffix="", prefix="tmp", dir=None, text=False)
+Parametry
+suffix – opcjonalny przyrostek nazwy pliku (np. ".txt").
+prefix – opcjonalny początek nazwy pliku (domyślnie "tmp").
+dir – katalog, w którym ma powstać plik (domyślnie katalog tymczasowy systemu).
+text – jeśli True, plik otwierany w trybie tekstowym; domyślnie binarny.
+
+Zwracana wartość
+Funkcja zwraca krotkę (fd, path):
+fd – deskryptor pliku (liczba całkowita), taki jak w systemie Unix;  
+    można użyć go np. w os.write() albo zamknąć.
+path – pełna ścieżka do nowo utworzonego pliku tymczasowego.
+
 
 
 
