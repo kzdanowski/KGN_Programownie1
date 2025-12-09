@@ -1,0 +1,13 @@
+1. Napisz funkcję del_empty_lines(plik_in, plik_out)
+która wczyta plik_in i zapisze go do plik_out
+pomijając puste linie.
+
+
+Napisz funkcję otwierającą plik z obsługą błędów:
+plik nie istnieje,
+brak uprawnień,
+złe kodowanie.
+
+Zaimplementuj wersję bezpieczną:
+zwraca słownik { "ok": bool, "data": str lub None, "error": str lub None }.
+
