@@ -1,0 +1,32 @@
+P1W09 - Pliki
+
+Struktura katalogów i plików.
+Informacje na dysku przechowujemy w plikach.
+Pliki ułożone są w katalogach.
+Katalogi zawierają pliki i katalogi.
+Jest to struktura drzewiasta.
+
+Nazwa pliku składa się z dwóch członów. Po kropce 
+mamy rozszerzenie, które informuje o typie pliku: txt, mp3, doc, docx, ...
+
+W Windows mamy główny katalog C:\
+
+Ścieżka dostępu do pliku to ciąg znaków opisujący ciąg katalogów,
+które prowadzą do pliku.
+
+Uwaga! Często polska nazwa ścieżki dostępu w menadżerze plików Windows jest inna
+niż prawdziwa nazwa, np. Pobrane i Downloads.
+Plik, który widzę w katalogu Użytkownicy\k.zdanowski\Pobrane\ 
+ma ścieżkę dostępu
+C:\Users\k.zdanowski\Downloads\
+
+Uwaga! Inną strukturę katalogów ma system Unix/Linux.
+W Linuxie plik i ścieżki zapisujemy przy pomocy ukośnika '/'
+Aby programy działały w obu systemach trzeba użyć moduły pathlib i funkcji Path().
+
+
+
+
+
+
+
