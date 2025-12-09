@@ -24,6 +24,270 @@ Uwaga! Inną strukturę katalogów ma system Unix/Linux.
 W Linuxie plik i ścieżki zapisujemy przy pomocy ukośnika '/'
 Aby programy działały w obu systemach trzeba użyć moduły pathlib i funkcji Path().
 
+>>> from pathlib import Path
+>>> Path('spam', 'becon')
+WindowsPath('spam/becon')
+>>> str(Path('spam', 'becon'))
+'spam\\becon'
+
+Aby poruszać się w systemie katalogów komputera możemy użyć biblioteki os (operating system).
+
+>>> os.getcwd()
+'C:\\WINDOWS\\system32'
+>>> os.chdir(Path(r'C:\Users\k.zdanowski\Documents\praca\UKSW\A_Zajecia\A_Koginitywistyka\Programowanie1\Wyklady'))
+>>> os.getcwd()
+'C:\\Users\\k.zdanowski\\Documents\\praca\\UKSW\\A_Zajecia\\A_Koginitywistyka\\Programowanie1\\Wyklady'
+
+>>> Path.home()
+WindowsPath('C:/Users/k.zdanowski')
+
+Jeśli mamy dwa obiekty typu WindowsPath, możemy połączyć je w jedną ścieżkę
+operatorem '/',
+np. 
+>>> Path(r'C:\Users')/Path('k.zdanowski')
+WindowsPath('C:/Users/k.zdanowski')
+>>> Path(r'C:\Users')/'k.zdanowski'/'Documents'
+WindowsPath('C:/Users/k.zdanowski/Documents')
+>>> 'Users'/'k.zdanowski'
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unsupported operand type(s) for /: 'str' and 'str'
+
+Bezwzględna ścieżka dostępu vs. względna ścieżka dostępu.
+Path.cwd()/Path(względna_ścieżka_dostępu)
+Path.home()/Path(względna_ścieżka_dostępu)
+
+Katalogi . i ..
+os.path.abspath(względna_scieżka) zwróci absolutną ścieżkę dostępu.
+Np. 
+>>> os.path.abspath('.')
+'C:\\Users\\k.zdanowski\\Documents\\praca\\UKSW\\A_Zajecia\\A_Koginitywistyka\\Programowanie1\\Wyklady'
+
+Znajdowanie części nazwy pliku.
+
+>>> file = r'C\Users\k.zdanowski\Documents\zadania.txt'
+>>> os.path.basename(file)
+'zadania.txt'
+>>> os.path.dirname(file)
+'C\\Users\\k.zdanowski\\Documents'
+>>> os.path.split(file)
+('C\\Users\\k.zdanowski\\Documents', 'zadania.txt')
+
+Możemy użyć też metody split ciągu znaków z os.sep:
+>>> file.split(os.sep)
+['C', 'Users', 'k.zdanowski', 'Documents', 'zadania.txt']
+
+Metoda os.listdir(scieżka)
+
+>>> os.mkdir('tmp')
+>>> os.listdir('.')
+['hs_err_pid27424.log', 'hs_err_pid41788.log', 'P1W08_Wyjatki.png', 'tmp', 'W04.py', 'W04_local_var.py', 'W04_PrzekazywanieArgumentow.py', 'W05_SlownikIloscWystapien.py', 'W06_Hanoi.py', 'W06_Recursion.py', 'W07_Obiekty.py', 'W08_Wyjatki.py', '__pycache__']
+
+os.makedirs(ścieżka) - tworzenie katalogów.
+os.makedir(ścieżka) - tworzy tylko jeden katalog, ostatni na liście.
+
+Sprawdzanie poprawności.
+
+Path(scieżka).is_dir()
+Path(scieżka).exists()
+Path(scieżka).is_file()
+
+2. Praca z plikami.
+
+>>> os.mkdir(Path('.', 'tmp'))
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+FileExistsError: [WinError 183] Nie można utworzyć pliku, który już istnieje: 'tmp'
+
+>>> helloFile = open(Path('.', 'tmp')/'hello.txt', tryb_odczytu)
+"r" - tylko odczyt, tryb domyślny,
+"w" - zapis
+"a" - dopisywanie na końcu pliku
+
+"r+" – odczyt i zapis, bez nadpisania pliku przy otwarciu.
+"w+" – odczyt + zapis, nadpisuje plik od początku.
+"a+" – odczyt + zapis, zapis dopisuje na końcu.
+
+Możemy dodać literkę "b" aby odczytywać dane binarne. 
+
+f.seek(offset, whence) ustawia odczyt pliku na offset-tny bajt 
+licząc od whence: 
+0 — początek pliku (domyślne),
+1 — bieżąca pozycja,
+2 — koniec pliku.
+
+f.write(tekst) - zapis na aktualnej pozycji,
+f.read() - odczyt od danej pozycji do końca pliku,
+f.readlines() - odczyt linii pliku do listy,
+f.tell() - aktualna pozycja w pliku
+
+
+>>> helloFile.readlines()
+['Litwo! Ojczyzno moja! ty jesteÅ› jak zdrowie;\n', 'Ile ciÄ™ trzeba ceniÄ‡, ten tylko siÄ™ dowie,\n', 'Kto ciÄ™ straciÅ‚. DziÅ› piÄ™knoÅ›Ä‡ twÄ… w caÅ‚ej ozdobie\n', 'WidzÄ™ i opisujÄ™, bo tÄ™skniÄ™ po tobie.']
+
+>>> helloFile.close() - plik trzeba zamknąć
+
+Aby poprawnie odczytać znaki diakrytyczne.
+
+>>> helloFile = open(Path('.', 'tmp')/'hello.txt', "r", encoding='utf-8')
+>>> helloFile.readlines()
+['Litwo! Ojczyzno moja! ty jesteś jak zdrowie;\n', 'Ile cię trzeba cenić, ten tylko się dowie,\n', 'Kto cię stracił. Dziś piękność twą w całej ozdobie\n', 'Widzę i opisuję, bo tęsknię po tobie.']
+>>> helloFile.close()
+
+Za Al Sweigart, "Automatyzacja nudnych zadań"
+>>> baconFile = open('bacon.txt', 'w') # tutaj Python utworzy plik, bo otwieramy w trybie "w"
+>>> baconFile.write('Witaj, świecie!\n')
+16
+>>> baconFile.close()
+>>> baconFile = open('bacon.txt', 'a')
+>>> baconFile.write('Bekon nie jest warzywem.')
+24
+>>> baconFile.close()
+>>> baconFile = open('bacon.txt')
+>>> content = baconFile.read()
+>>> baconFile.close()
+>>> print(content)
+Witaj, świecie!
+Bekon nie jest warzywem.
+
+Uwaga! W powyższym przykładzie brakuje 'encoding'.
+>>> file = open(Path('.', 'tmp', 'bacon.txt'), "w")
+>>> file.write("Śniadanie i kolacja")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.12_3.12.2800.0_x64__qbz5n2kfra8p0\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u015a' in position 0: character maps to <undefined>
+
+Sposoby na przeiterowanie zawartości katalogu.
+
+>>> os.listdir()
+['hs_err_pid27424.log', 'hs_err_pid41788.log', 'P1W08_Wyjatki.png', 'tmp', 'W04.py', 'W04_local_var.py', 'W04_PrzekazywanieArgumentow.py', 'W05_SlownikIloscWystapien.py', 'W06_Hanoi.py', 'W06_Recursion.py', 'W07_Obiekty.py', 'W08_Wyjatki.py', '__pycache__']
+>>> list(Path('.').glob('*.py'))
+[WindowsPath('W04.py'), WindowsPath('W04_local_var.py'), WindowsPath('W04_PrzekazywanieArgumentow.py'), WindowsPath('W05_SlownikIloscWystapien.py'), WindowsPath('W06_Hanoi.py'), WindowsPath('W06_Recursion.py'), WindowsPath('W07_Obiekty.py'), WindowsPath('W08_Wyjatki.py')]
+>>> list(Path('.').glob('*'))
+[WindowsPath('hs_err_pid27424.log'), WindowsPath('hs_err_pid41788.log'), WindowsPath('P1W08_Wyjatki.png'), WindowsPath('tmp'), WindowsPath('W04.py'), WindowsPath('W04_local_var.py'), WindowsPath('W04_PrzekazywanieArgumentow.py'), WindowsPath('W05_SlownikIloscWystapien.py'), WindowsPath('W06_Hanoi.py'), WindowsPath('W06_Recursion.py'), WindowsPath('W07_Obiekty.py'), WindowsPath('W08_Wyjatki.py'), WindowsPath('__pycache__')]
+
+Przykład.
+Zmiana nazw plików. 
+Zastąpienie nazw plików txt w katalogu liczbami xy.
+#ChatGPT
+import os
+
+def rename_txt_files(directory):
+    # Pobieramy wszystkie pliki .txt
+    txt_files = [f for f in os.listdir(directory) if f.lower().endswith(".txt")]
+    txt_files.sort()  # Sortujemy, żeby numeracja była stabilna
+
+    for i, filename in enumerate(txt_files, start=1):
+        new_name = f"{i:02}.txt"  # format dwucyfrowy
+        old_path = os.path.join(directory, filename)
+        new_path = os.path.join(directory, new_name)
+
+        # Jeżeli istnieje plik o nowej nazwie, usuń lub pomiń według potrzeb
+        if os.path.exists(new_path):
+            print(f"Pomijam – plik {new_name} już istnieje.")
+            continue
+
+        os.rename(old_path, new_path)
+        print(f"{filename} → {new_name}")
+
+# Przykład użycia:
+# rename_txt_files("/ścieżka/do/katalogu")
+
+
+3. Składnia with
+
+Pamiętanie o zamykaniu plików generuje błędy.
+Można użyć składni with
+with open("plik.txt", "r") as f:
+    dane = f.read()
+
+Python sam zamknie plik po wyjściu z części "with".
+
+Typowe wyjątki.
+import os
+
+def safe_read(filepath, encoding="utf-8"):
+    try:
+        with open(filepath, "r", encoding=encoding) as f:
+            return f.read()
+
+    except FileNotFoundError:
+        print(f"[BŁĄD] Plik nie istnieje: {filepath}")
+
+    except PermissionError:
+        print(f"[BŁĄD] Brak uprawnień do pliku: {filepath}")
+
+    except UnicodeDecodeError:
+        print(f"[BŁĄD] Nie można odczytać pliku z użyciem kodowania {encoding}.")
+
+    except IsADirectoryError:
+        print(f"[BŁĄD] Podano katalog zamiast pliku: {filepath}")
+
+    except OSError as e:
+        print(f"[BŁĄD] Problem systemowy przy dostępie do pliku: {e}")
+
+    return None  # jasny sygnał, że odczyt się nie udał
+
+Policzenie ilości linii w pliku.
+with open(nazwa_pliku, 'r') as f:
+    print('Ilosć linii w pliku ' + nazwa_pliku + ': '+ str(len(f.readlines())))
+
+Jak policzyć liczbę znaków?
+Jak policzyć liczbę słów?
+Jak policzyć liczbę różnych słów w pliku?
+
+def count_chars(filepath, encoding="utf-8"):
+    """Zwraca liczbę znaków w pliku."""
+    with open(filepath, "r", encoding=encoding) as f:
+        text = f.read()
+    return len(text)
+
+
+def count_words(filepath, encoding="utf-8"):
+    """Zwraca liczbę słów w pliku."""
+    with open(filepath, "r", encoding=encoding) as f:
+        text = f.read()
+    words = text.split()  # proste rozbijanie po białych znakach
+    return len(words)
+
+
+def count_unique_words(filepath, encoding="utf-8"):
+    """Zwraca liczbę unikalnych słów (w wersji case-insensitive)."""
+    with open(filepath, "r", encoding=encoding) as f:
+        text = f.read()
+    words = text.lower().split()
+    unique = set(words)
+    return len(unique)
+
+4. Kopiowanie plików i katalogów
+Moduł shutil
+shutil.copy(plik_zrodlo, plik_docelowy)
+shutil.copy(plik_zrodlo, katalog_docelowy)
+
+shutil.copy2 - jak wyżej ale kopiuje metadane
+
+shutil.copytree(folder_zrodlowy, folder_docelowy, dirs_exist_ok=True)
+- kopiuje całe drzewo katalogów, 
+dirs_exist_ok - pozwala na istnienie katalogów w folderze docelowym
+
+
+5. Usuwanie plików i katalogów (za Sweigert).
+1. Wywołanie funkcji os.unlink(ścieżka dostępu) spowoduje usunięcie pliku
+znajdującego się w podanej ścieżce dostępu.
+2. Wywołanie funkcji os.rmdir(ścieżka dostępu) spowoduje usunięcie katalogu
+znajdującego się w podanej ścieżce dostępu. Ten katalog musi być pusty.
+3. Wywołanie funkcji os.rmtree(ścieżka dostępu) spowoduje usunięcie
+katalogu znajdującego się w podanej ścieżce dostępu wraz z jego całą
+zawartością.
+
+Moduł send2trash przenosi tylko pliki do kosza. Bezpieczniejsze.
+
+
+
+
 
 
 
