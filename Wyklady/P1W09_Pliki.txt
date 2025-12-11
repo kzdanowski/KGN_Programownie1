@@ -10,6 +10,7 @@ Nazwa pliku składa się z dwóch członów. Po kropce
 mamy rozszerzenie, które informuje o typie pliku: txt, mp3, doc, docx, ...
 
 W Windows mamy główny katalog C:\
+W Unix/Linux katalog root: /
 
 Ścieżka dostępu do pliku to ciąg znaków opisujący ciąg katalogów,
 które prowadzą do pliku.
