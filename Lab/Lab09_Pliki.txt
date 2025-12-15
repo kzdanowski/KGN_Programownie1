@@ -11,3 +11,35 @@ złe kodowanie.
 Zaimplementuj wersję bezpieczną:
 zwraca słownik { "ok": bool, "data": str lub None, "error": str lub None }.
 
+2.
+Otwórz plik tekst.txt i wypisz:
+liczbę linii,
+liczbę znaków (łącznie ze znakami końca linii),
+liczbę słów.
+
+W modyfikacji, otwórz plik podany jako argument wywołania 
+przez użytkownika w: python program.py nazwa_pliku.
+
+3. 
+Utwórz plik liczby.txt zawierający po jednej liczbie całkowitej w każdej linii.
+Następnie:
+
+wczytaj liczby z pliku,
+oblicz ich sumę, średnią i maksimum,
+wypisz wyniki na ekran.
+
+4.
+Dany jest plik dane.txt zawierający pary klucz:wartość (po jednej parze w linii).
+Przykład:
+wiek:23
+wzrost:180
+waga:75
+Wczytaj dane do słownika i wypisz go na ekran.
+
+5.
+Znajdź w pliku wszystkie wersy zawierające dane słowo (podane przez użytkownika) 
+i zapisz takie wersy do pliku wynik.txt
+w formacie
+nr. wersu: wers
+
+
