@@ -1,2 +1,68 @@
 P1W10 - Wyrażenia regularne
 
+Wyrażenia regularne (re, regular expressions) to sposób opisu wzorców tekstu.
+Wzorce te możemy wyszukiwać w tekście.
+Wyszukane wzorce możemy zamienić, sprawdzać ich poprawność,
+wyciągać informacje, np. wypisać wszystkie nazwy plików w tekście,
+wszystkie numery telefonów, itp.
+
+Biblioteka obsługująca wyrażenia regularne to re.
+
+Najprostsze wyrażenie regularne to ciąg znaków, np. "kot".
+
+import re
+
+Najważniejsze funkcje.
+
+re.search(wzorzec, tekst)
+
+>>> re.search("kot", "Ala ma kota")
+<re.Match object; span=(7, 10), match='kot'>
+>>> x.span()
+(7, 10)
+
+>>> print(re.search("kot", "Ala ma kota"))
+<re.Match object; span=(7, 10), match='kot'>
+>>> print(re.search("pies", "Ala ma kota"))
+None
+-------------------------------
+re.match - sprawdza dopasowanie na początku tekstu
+
+ print(re.match("kot", "Ala ma kota"))
+None
+>>> print(re.match("Al", "Ala ma kota"))
+<re.Match object; span=(0, 2), match='Al'>
+-----------------------------------------------------
+
+re.findall - zwraca listę dopasowań
+
+>>> re.findall("a", "Ala ma kota")
+['a', 'a', 'a']
+>>> re.findall("aa", "Aaaalaaa ma kotaaa")
+['aa', 'aa', 'aa']
+>>> re.findall("aa", "Aaaaalaaa ma kotaaa")
+['aa', 'aa', 'aa', 'aa']
+
+------------------------------
+re.sub(wzorzec, nowy, tekst) - zmienia wystąpienia (wszystkie) wzorzec na nowy w tekście
+----------------------------
+Jeśli chcemy poznać miejsca wystąpień wzorca zamiast tylko wzorców, jak w findall,
+musimy użyć finditer.
+
+>>> xl = [m for m in re.finditer("aa", "Aaaaalaaa ma kotaaa")]
+>>> xl
+[<re.Match object; span=(1, 3), match='aa'>, <re.Match object; span=(3, 5), match='aa'>, <re.Match object; span=(6, 8), match='aa'>, <re.Match object; span=(16, 18), match='aa'>]
+>>> for x in xl:
+...     print(x.group(), x.span())
+...
+aa (1, 3)
+aa (3, 5)
+aa (6, 8)
+aa (16, 18)
+
+
+
+
+
+
+
