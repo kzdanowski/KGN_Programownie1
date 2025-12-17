@@ -137,6 +137,23 @@ Uwaga!
 W granicę słowa wchodzą też spacje za słowem
 ale mogą one też wejść do dopasowania.
 
+Operacje logiczne - alternatywa |
+np. (a|b), 
+
+Zakres znaków
+nawiasy kwardratowe, w nawiasach wypisane znaki lub ich zakres:
+[abc]
+[a-z]
+[a-z]|[A-Z]
+
+^ po "[" to negacja
+[^0-9] - wszystko co nie jest cyfrą
+
+[abc] to (a|b|c)
+\d to [0-9]
+\w to [a-zA-Z0-9]
+
+
 Grupowanie
 
 Jeśli w wyrażeniu regularnym zgrupujemy jego części przy pomocy
@@ -159,7 +176,42 @@ dopasowań do poszczególnych nawiasów.
 >>> [(m.group(0), m.group(1)) for m in re.finditer(r'\(\d\)(\d)', r"(3)(4)(5)6 4567")]
 [('(5)6', '6')]
 
+Opcje dopasowywania - trzeci argument
 
+re.IGNORECASE – ignoruj wielkość liter
+re.MULTILINE – ^ i $ działają na liniach
+re.DOTALL – . dopasowuje też \n
+
+Prekompilacja
+
+Jeśli wyrażenia regularnego używamy wiele razy warto je
+prekompilować
+pattern = re.compile(regex)
+
+3. Przykłady
+
+3.1 Znajdź wszystkie liczby całkowite
+
+"\d*"
+
+3.2 Znajdź wszystkie liczby zmiennopozycjne
+"\d+\.\d+
+
+3.3 Znajdź numery telefonu w formacie: trzy grupy po trzy cyfry przedzielone '-'
+"\d\d\d-\d\d\d-\d\d\d"
+"\d{3}-\d{3}-\d{3}"
+
+>>> list(re.findall(r"\d\d\d-\d\d\d-\d\d\d", "123-234-345-456-567-678-789-890"))
+['123-234-345', '456-567-678']
+>>> list(re.findall(r"\d{3}-\d{3}-\d{3}", "123-234-345-456-567-678-789-890"))
+['123-234-345', '456-567-678']
+>>> [m.group(0) for m in re.finditer(r"(\d{3}-){2}\d{3}", "123-234-345-456-567-678-789-890")]
+['123-234-345', '456-567-678']
+
+4. Znajdź nazwy plików audio. 
+Podziel je na pary uporządkowane, nazwa pliku i rozszerzenie, mp3 lub ogg lub flac.
+
+\b([^.\/\\]+)\.(mp3|ogg|flac)\b - W nazwach plików nie pozwalamy na znaki z listy: ., /, \. 
 
 
 
