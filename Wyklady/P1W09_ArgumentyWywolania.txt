@@ -1,0 +1,31 @@
+Jak przekazywać argumenty wywołania w consoli (CLI)
+przy wywołaniu postaci:
+$> python program.py arg1 arg2 arg3
+
+Przykład z wykorzystaniem biblioteki argparse.
+
+
+def main(name_fin, name_fout,text_encoding):
+    try:
+        with open(name_fin, "r", encoding=text_encoding) as fin, \
+        open(name_fout, "w", encoding=text_encoding) as fout:
+            for line in fin.readlines():
+                if len(line.strip()) != 0:
+                    fout.write(line)
+    except FileNotFoundError as e:
+        print(e)
+    except PermissionError as e:
+        print(e)
+    except UnicodeDecodeError as e:
+        print(e)
+
+from argparse import ArgumentParser
+
+if __name__== "__main__":
+    p = ArgumentParser()
+    p.add_argument("name_fin")
+    p.add_argument("name_fout")
+    args = p.parse_args()
+    main(args.name_fin, args.name_fout, "utf-8")
+
+
