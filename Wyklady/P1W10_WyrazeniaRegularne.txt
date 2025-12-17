@@ -92,7 +92,72 @@ IndexError: no such group
 >>> wl[0].group(0)
 'aba'
 
+Najprosciej:
+matches = [
+    (m.group(), m.start(), m.end())
+    for m in re.finditer(pattern, text)
+]
+
 2. Wyrażenia regularne, które nie są stałymi ciągami znaków
+
+W wyrażeniach regularnych mogą pojawić się symbole,
+których oznaczają całe rodziny znaków.
+
+. - dowolny znak (oprócz '\n')
+\d - cyfra (0-9)
+\w - znak alfanumeryczny (litera lub cyfra)
+\s - biały znak (spacja, tab, ...)
+
+\D, \W, \S - znak inny niż ...
+
+Uwaga!
+Ponieważ symbole specjalne zaczynają się od "\",
+to w wyrażeniu regularnym lepiej używać 'raw string'.
+
+
+
+Możemy oznaczyć ile razy ma wystąpić dany wzorzeć w wyrażeniu:
+* - dowolnie wiele razy lub wcale [0, 1, ...]
++ - jeden raz lub więcej, [1,...]
+? - raz lub wcale [0,1]
+{n} - dokładnie n razy
+{n,m} - od n do m razy
+
+Pozycje w tekście:
+^ - początek tekstu,
+$ - koniec tekstu,
+\b - granica słowa
+
+>>> list(re.findall(r'\bm', "Ala ma kotam"))
+['m']
+>>> list(re.findall(r'\b m', "Ala ma kotam"))
+[' m']
+
+Uwaga!
+W granicę słowa wchodzą też spacje za słowem
+ale mogą one też wejść do dopasowania.
+
+Grupowanie
+
+Jeśli w wyrażeniu regularnym zgrupujemy jego części przy pomocy
+nawiasów, to findall zwróci nam krotki (lub ciągi w przypadku jednej pary nawiasów)
+dopasowań do poszczególnych nawiasów.
+
+>>> list(re.findall(r'(\d)\d', r"(3)3(3)3 4567"))
+['4', '6']
+>>> list(re.findall(r'(\d)(\d)', r"(3)(3)(3)3 4567"))
+[('4', '5'), ('6', '7')]
+
+>>> list(re.findall(r'(\d)(\d)', r"(3)3(3)3 4567"))
+[('4', '5'), ('6', '7')]
+>>> list(re.findall(r'(\d)(\d)', r"(3)(3)(3)3 4567"))
+[('4', '5'), ('6', '7')]
+>>> list(re.findall(r'\(\d\)\(\d\)', r"(3)(3)(3)3 4567"))
+['(3)(3)']
+>>> list(re.findall(r'\(\d\)(\d)', r"(3)(3)(3)3 4567"))
+['3']
+>>> [(m.group(0), m.group(1)) for m in re.finditer(r'\(\d\)(\d)', r"(3)(4)(5)6 4567")]
+[('(5)6', '6')]
 
 
 
