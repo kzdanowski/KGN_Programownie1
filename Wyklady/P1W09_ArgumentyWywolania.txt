@@ -31,7 +31,9 @@ if __name__== "__main__":
 
 Inaczej, trochę prościej przy pomocy sys.argv.
 
-if __name__ == "__main__":
+import sys
+
+if __name__ == "__main__":  # czy jesteśmy wywołani w sposób np. python plik.py
     if len(sys.argv) != 3:
         print("Użycie: python script.py <plik_wejściowy> <plik_wyjściowy>")
         sys.exit(1)
