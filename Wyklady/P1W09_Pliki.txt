@@ -205,6 +205,15 @@ Można użyć składni with
 with open("plik.txt", "r") as f:
     dane = f.read()
 
+albo
+
+with open("input.txt", "r") as fin,
+     open("output.txt", "w") as fout:
+     dane = f.read()
+     f.write(dane)
+
+
+
 Python sam zamknie plik po wyjściu z części "with".
 
 Typowe wyjątki.
@@ -280,7 +289,7 @@ dirs_exist_ok - pozwala na istnienie katalogów w folderze docelowym
 znajdującego się w podanej ścieżce dostępu.
 2. Wywołanie funkcji os.rmdir(ścieżka dostępu) spowoduje usunięcie katalogu
 znajdującego się w podanej ścieżce dostępu. Ten katalog musi być pusty.
-3. Wywołanie funkcji os.rmtree(ścieżka dostępu) spowoduje usunięcie
+3. Wywołanie funkcji shutil.rmtree(ścieżka dostępu) spowoduje usunięcie
 katalogu znajdującego się w podanej ścieżce dostępu wraz z jego całą
 zawartością.
 
