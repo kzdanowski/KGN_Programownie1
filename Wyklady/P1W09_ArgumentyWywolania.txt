@@ -29,3 +29,16 @@ if __name__== "__main__":
     main(args.name_fin, args.name_fout, "utf-8")
 
 
+Inaczej, trochę prościej przy pomocy sys.argv.
+
+if __name__ == "__main__":
+    if len(sys.argv) != 3:
+        print("Użycie: python script.py <plik_wejściowy> <plik_wyjściowy>")
+        sys.exit(1)
+
+    name_fin = sys.argv[1]
+    name_fout = sys.argv[2]
+
+    main(name_fin, name_fout, "utf-8")
+
+
