@@ -54,7 +54,11 @@ musimy użyć finditer.
 
 >>> xl = [m for m in re.finditer("aa", "Aaaaalaaa ma kotaaa")]
 >>> xl
-[<re.Match object; span=(1, 3), match='aa'>, <re.Match object; span=(3, 5), match='aa'>, <re.Match object; span=(6, 8), match='aa'>, <re.Match object; span=(16, 18), match='aa'>]
+[<re.Match object; span=(1, 3), match='aa'>, 
+ <re.Match object; span=(3, 5), match='aa'>, 
+ <re.Match object; span=(6, 8), match='aa'>, 
+ <re.Match object; span=(16, 18), match='aa'>]
+
 >>> for x in xl:
 ...     print(x.group(), x.span())
 ...
@@ -70,13 +74,16 @@ Możemy też grupować przy pomocy nawiasów podwyrażenia naszego wyrażenia.
 >>> w = re.finditer("a(b)(a)", "Aababalabaa ma kotaaba")
 >>> wl = list(w)
 >>> wl
-[<re.Match object; span=(1, 4), match='aba'>, <re.Match object; span=(7, 10), match='aba'>, <re.Match object; span=(19, 22), match='aba'>]
+[<re.Match object; span=(1, 4), match='aba'>, 
+ <re.Match object; span=(7, 10), match='aba'>, 
+ <re.Match object; span=(19, 22), match='aba'>]
 
 Każdy obiekt na liście wl zawiera informację o dopasowaniu całego wzorca
 oraz "podwzorców" wziętych w nawiasy.
 
 >>> for m in wl:
-...     print(m.group(0), m.group(1), m.group(2), m.span(0), m.span(1), m.span(2))
+...     print(m.group(0), m.group(1), m.group(2), 
+              m.span(0), m.span(1), m.span(2))
 ...
 aba b a (1, 4) (2, 3) (3, 4)
 aba b a (7, 10) (8, 9) (9, 10)
@@ -114,6 +121,11 @@ Uwaga!
 Ponieważ symbole specjalne zaczynają się od "\",
 to w wyrażeniu regularnym lepiej używać 'raw string'.
 
+Przykład. 
+Wzorzec dwóch cyfr możemy zapisać jako 
+'\\d\\d' albo jako r'\d\d'.
+Wzorzec dwóch ukośników możemy zapisać jako
+'\\\\' albo jako r'\\'.
 
 
 Możemy oznaczyć ile razy ma wystąpić dany wzorzeć w wyrażeniu:
@@ -140,6 +152,11 @@ ale mogą one też wejść do dopasowania.
 Operacje logiczne - alternatywa |
 np. (a|b), 
 
+Zakres operatorów.
+Operatory ?, *, +, {m,n} mają najwyższy priorytet.
+Wiążą najkrótsze poprawne wyrażenie, które je poprzedza.
+
+
 Zakres znaków
 nawiasy kwardratowe, w nawiasach wypisane znaki lub ich zakres:
 [abc]
@@ -152,6 +169,8 @@ nawiasy kwardratowe, w nawiasach wypisane znaki lub ich zakres:
 [abc] to (a|b|c)
 \d to [0-9]
 \w to [a-zA-Z0-9]
+
+
 
 
 Grupowanie
