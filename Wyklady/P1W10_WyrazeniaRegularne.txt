@@ -181,6 +181,27 @@ postawić znak '?'
 >>> re.findall('.{2,3}?', 'abcdefgh')
 ['ab', 'cd', 'ef', 'gh']
 
+Przykład.
+Wyszukiwanie w tekście HTML
+
+text = "<tag>pierwszy</tag><tag>drugi</tag>"
+
+print(re.findall(r"<tag>.*</tag>", text))
+# ['<tag>pierwszy</tag><tag>drugi</tag>']
+
+print(re.findall(r"<tag>.*?</tag>", text))
+# ['<tag>pierwszy</tag>', '<tag>drugi</tag>']
+
+Przykład.
+
+text = "(1)(22)(333)"
+
+print(re.findall(r"\(.*\)", text))
+# ['(1)(22)(333)']
+
+print(re.findall(r"\(.*?\)", text))
+# ['(1)', '(22)', '(333)']
+
 Uwaga! Znak zapytania po operatorze zmienia
 sposób jego interpretacji przez Pythona.
 Zmienia więc jego znaczenie, ale nowe znaczenie
@@ -190,10 +211,34 @@ dopasowania wzorca do tekstu, to nie ma znaczenia,
 czy wstawimy o operatorach znak zapytania czy nie.
 
 Uwaga! Siła wiązania.
-Operatory jednoargumentowe: ?, *, +, {m,n} wiążą najsilniej.
+Operatory jednoargumentowe: ?, *, +, {m,n} wiążą najsilniej,
+po wyrażeniach zgrupowanych nawiasami (atomach).
 W związku z tym ich zakres jest wyznaczany jako pierwszy 
 i jest możliwie najmniejszy.
 Operator alternatywy, |, wiąże najsłabiej.
+
+Hierarchia wiązania
+
+Atomy: 
+znak, np. a
+klasa znaków: [abc]
+grupa: (ab)
+kotwice / lookaroundy: ^, $, (?=...), itd.
+
+Kwantyfikatory: *, +, ?, {m,n}
+wiąża poprzedzający atom
+
+
+Konkatenacja: ab
+
+
+Alternatywa: a|b
+
+
+Co dokładnie wiążą kwantyfikatory?
+
+ab* = a (b*)
+
 
 Wyznacz zasięgi i znaczenie wyrażeń:
 

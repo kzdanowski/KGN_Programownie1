@@ -1,0 +1,160 @@
+ZADANIA: WYRAŻENIA REGULARNE W PYTHONIE (re)
+(ChatGPT)
+
+========================
+ZESTAW 1: PODSTAWY
+========================
+
+Zadanie 1 – liczba w tekście
+Sprawdź, czy napis zawiera co najmniej jedną cyfrę.
+
+Dane testowe:
+abc
+abc123
+123
+
+
+Zadanie 2 – dokładnie trzy litery
+Dopasuj napis składający się z dokładnie trzech małych liter.
+
+Dane testowe:
+abc
+abcd
+ab
+a1c
+
+
+Zadanie 3 – słowo na początku linii
+Znajdź słowo ERROR tylko jeśli występuje na początku linii.
+
+Dane testowe:
+ERROR coś się stało
+INFO ERROR
+ERROR
+
+
+========================
+ZESTAW 2: KWANTYFIKATORY
+========================
+
+Zadanie 4 – opcjonalny znak
+Dopasuj oba zapisy: color i colour.
+
+Dane testowe:
+color
+colour
+colouur
+
+
+Zadanie 5 – co najmniej dwie cyfry
+Znajdź fragmenty składające się z co najmniej dwóch cyfr pod rząd.
+
+Dane testowe:
+ID 1, 23, 456, 7
+
+
+Zadanie 6 – zakres {m,n}
+Dopasuj liczby mające od 2 do 4 cyfr.
+
+Dane testowe:
+1
+12
+123
+1234
+12345
+
+
+========================
+ZESTAW 3: NAWIASY I ALTERNATYWA
+========================
+
+Zadanie 7 – alternatywa
+Dopasuj słowo cat lub dog.
+
+Dane testowe:
+cat
+dog
+cow
+
+
+Zadanie 8 – alternatywa z powtórzeniem
+Dopasuj jeden lub więcej fragmentów ab lub cd.
+
+Poprawne:
+ab
+cd
+abab
+abcd
+
+Błędne:
+a
+abc
+abd
+
+
+Zadanie 9 – zakres działania kwantyfikatora
+Wyjaśnij różnicę między:
+ab+
+(ab)+
+
+Podaj przykłady napisów testowych.
+
+
+========================
+ZESTAW 4: ZACHŁANNOŚĆ
+========================
+
+Zadanie 10 – pierwszy nawias
+Wydobądź tylko pierwszy nawias.
+
+Dane testowe:
+(a)(b)(c)
+
+
+Zadanie 11 – HTML
+Wydobądź oba elementy <p>...</p>.
+
+Dane testowe:
+<p>pierwszy</p><p>drugi</p>
+
+
+========================
+ZESTAW 5: GRUPY
+========================
+
+Zadanie 12 – imię i nazwisko
+Wydobądź imię i nazwisko.
+
+Dane testowe:
+Jan Kowalski
+
+
+Zadanie 13 – data
+Wydobądź rok, miesiąc i dzień.
+
+Dane testowe:
+2024-03-15
+
+
+========================
+ZESTAW 6: ZADANIA MYŚLOWE
+========================
+
+Zadanie 14 – priorytet alternatywy
+Czy regex ^a|bc$ dopasowuje:
+a
+bc
+abc
+(Uzasadnij)
+
+
+Zadanie 15 – walidacja liczby
+Dlaczego regex:
+-?\d+
+nie wystarcza do walidacji całego napisu?
+
+Dane testowe:
+123
+-456
+abc-123
+12a
