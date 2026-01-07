@@ -155,9 +155,55 @@ np. (a|b),
 Zakres operatorów.
 Operatory ?, *, +, {m,n} mają najwyższy priorytet.
 Wiążą najkrótsze poprawne wyrażenie, które je poprzedza.
+Jest to tzw. 
+dopasowanie zachłanne - bierzemy tyle, ile to tylko możliwe.
+
+Przykłady.
+>>> re.findall('.?', 'abcdefgh')
+['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', '']
+>>> re.findall('.*', 'abcdefgh')
+['abcdefgh', '']
+>>> re.findall('.+', 'abcdefgh')
+['abcdefgh']
+>>> re.findall('.{2,3}', 'abcdefgh')
+['abc', 'def', 'gh']
+
+Jeśli chcielibyśmy dopasować minimalny fragment tekstu 
+do wzorca, musimy  po operatorze ?, *, +, {m,n} 
+postawić znak '?'
+
+>>> re.findall('.??', 'abcdefgh')
+['', 'a', '', 'b', '', 'c', '', 'd', '', 'e', '', 'f', '', 'g', '', 'h', '']
+>>> re.findall('.*?', 'abcdefgh')
+['', 'a', '', 'b', '', 'c', '', 'd', '', 'e', '', 'f', '', 'g', '', 'h', '']
+>>> re.findall('.+?', 'abcdefgh')
+['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+>>> re.findall('.{2,3}?', 'abcdefgh')
+['ab', 'cd', 'ef', 'gh']
+
+Uwaga! Znak zapytania po operatorze zmienia
+sposób jego interpretacji przez Pythona.
+Zmienia więc jego znaczenie, ale nowe znaczenie
+jest bliskie znaczeniu bez tego znaku.
+W szczególności, jeśli istnieje tylko jeden sposób 
+dopasowania wzorca do tekstu, to nie ma znaczenia,
+czy wstawimy o operatorach znak zapytania czy nie.
+
+Uwaga! Siła wiązania.
+Operatory jednoargumentowe: ?, *, +, {m,n} wiążą najsilniej.
+W związku z tym ich zakres jest wyznaczany jako pierwszy 
+i jest możliwie najmniejszy.
+Operator alternatywy, |, wiąże najsłabiej.
+
+Wyznacz zasięgi i znaczenie wyrażeń:
+
+ab|cd*
+(ab | cd)*
+(ab)|(cd*)
+(ab)|(cd)*
 
 
-Zakres znaków
+Zakresy znaków
 nawiasy kwardratowe, w nawiasach wypisane znaki lub ich zakres:
 [abc]
 [a-z]
