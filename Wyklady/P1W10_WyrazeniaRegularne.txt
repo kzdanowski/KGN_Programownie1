@@ -30,6 +30,7 @@ x.span() = (x.start(), x.end())
 None
 -------------------------------
 re.match - sprawdza dopasowanie na początku tekstu
+re.matchfull - sprawdza czy cały tekst pasuje do wzorca
 
  print(re.match("kot", "Ala ma kota"))
 None
