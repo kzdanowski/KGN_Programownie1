@@ -238,13 +238,31 @@ Alternatywa: a|b
 
 Co dokładnie wiążą kwantyfikatory?
 
-ab* = a (b*)
+ab* = a (b*) - a, potem b dowolnie wiele razy
+(ab)* - ciąg ab powtorzony dowolnie wiele razy (być może zero razy)
+(ab)+ - ciąg ab powtórzony jeden lub więcej razy
 
 
 Wyznacz zasięgi i znaczenie wyrażeń:
 
-ab|cd*
-(ab | cd)*
+ab|cd*  =   ab |   c(d*) = (ab) | (c(d*)) - albo ab albo c i potem ciąg d,
+(ab | cd)* 
+
+>>> w = re.finditer('(ab|cd)+', 'mabcd cdalabcala ababcd cdabcd cddd ac')
+>>> for i in w: print(i.group())
+...
+abcd
+cd
+ab
+ababcd
+cdabcd
+cd
+Uwaga! findall zwróci tylko podgrupy naszego wzorca 
+ujęte w nawiasach. finditer zwrócił cały wzorzec jako i.group()
+
+>>> re.findall('(ab|cd)+', 'mabcd cdalabcala ababcd cdabcd cddd ac')
+['cd', 'cd', 'ab', 'cd', 'cd', 'cd']
+
 (ab)|(cd*)
 (ab)|(cd)*
 
@@ -260,6 +278,7 @@ nawiasy kwardratowe, w nawiasach wypisane znaki lub ich zakres:
 
 [abc] to (a|b|c)
 \d to [0-9]
+\D to [^0-9]
 \w to [a-zA-Z0-9]
 
 
@@ -298,6 +317,10 @@ Prekompilacja
 Jeśli wyrażenia regularnego używamy wiele razy warto je
 prekompilować
 pattern = re.compile(regex)
+
+>>> pattern = re.compile(r"\d\d")
+>>> pattern.findall("Ala 23 ma 34 lata i sal35a.")
+['23', '34', '35']
 
 3. Przykłady
 
