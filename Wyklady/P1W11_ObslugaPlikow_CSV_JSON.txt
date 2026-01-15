@@ -1,2 +1,331 @@
 Obsługa plików CSV, JSON
 
+Pliki csv i json służą do przechowywania danych.
+Są to jedne z wielu rodzajów takich plików,
+jedne z najprostszych.
+
+Oba pliki są w formacie tekstowym, więc można odczytać
+je przy pomocy zwykłych narzedzi do pracy z plikami.
+Łatwiej zrobić to przy pomocy bibliotek.
+
+
+1. CSV
+Pliki csv są w minimalnym stopniu sformatowane.
+Pierwsza linia zawiera nazwy kolumn.
+Kolejne to wartości.
+Np.
+Imie, Nazwisko, Wiek
+Konrad, Zdanowski, 100
+Jan, Kowalski, 36
+....
+
+Separator to najczęściej: ,, ;, :.
+
+Pliki te są tworzone np. przez programy generujące 
+dane. Można do tego formatu wyeksportować dane
+z Excela lub importować z niego do Excela.
+
+Biblioteka służąca do obsługi tyc plików to csv.
+
+1.1 Zapisywanie plików csv.
+
+Przykłady za https://realpython.com/python-csv
+
+import csv
+
+with open('employee_file.csv', mode='w') as employee_file:
+    employee_writer = csv.writer(employee_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
+    employee_writer.writerow(['John Smith', 'Accounting', 'November'])
+    employee_writer.writerow(['Erica Meyers', 'IT', 'March'])
+
+Zapisywanie ze struktury słownik.
+
+import csv
+
+with open('employee_file2.csv', mode='w') as csv_file:
+    fieldnames = ['emp_name', 'dept', 'birth_month']
+    writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+
+    writer.writeheader()
+    writer.writerow({'emp_name': 'John Smith', 'dept': 'Accounting', 'birth_month': 'November'})
+    writer.writerow({'emp_name': 'Erica Meyers', 'dept': 'IT', 'birth_month': 'March'})
+
+Bibliota służąca analizie danych to np. pandas.
+
+
+
+>>> import pandas
+>>> df = pandas.read_csv('P1W11_Emp.csv')
+>>> print(df)
+
+             Name Hire Date   Salary  Sick Days remaining
+0  Graham Chapman  03/15/14  50000.0                   10
+1     John Cleese  06/01/15  65000.0                    8
+2       Eric Idle  05/12/14  45000.0                   10
+3     Terry Jones  11/01/13  70000.0                    3
+4   Terry Gilliam  08/12/14  48000.0                    7
+5   Michael Palin  05/23/13  66000.0                    8
+
+Możemy też zmienić indeks na którąś z kolum,
+sformatować daty, ...
+
+>>> df = pandas.read_csv('P1W11_Emp.csv', index_col='Name', parse_dates=['Hire Date'])
+<stdin>:1: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+>>> print(df)
+                Hire Date   Salary  Sick Days remaining
+Name
+Graham Chapman 2014-03-15  50000.0                   10
+John Cleese    2015-06-01  65000.0                    8
+Eric Idle      2014-05-12  45000.0                   10
+Terry Jones    2013-11-01  70000.0                    3
+Terry Gilliam  2014-08-12  48000.0                    7
+Michael Palin  2013-05-23  66000.0                    8
+
+2. JSON
+
+Za: https://realpython.com/python-json
+
+JSON -  JavaScript Object Notation
+
+Pliki JSON to pliki tekstowe
+zawierające obiekt lub tablicę.
+
+Najprostsze pliki JSON to 
+{}
+lub 
+[]
+
+Dostępne wartości to:
+null | false | true | object | array | number | string
+gdzie object to obiekt postaci { ... } 
+array jest postaci [ ... ]
+
+Obiekt
+{
+    "imie": "Ala",
+    "nazwisko" : "Abacka",
+    "wiek" : 30,
+    "email" : null
+
+}
+
+Tablica:
+[1, 2, 3, 4]
+
+Można stworzyć tablicę obiektów, zagnieżdżać obiekty itd.
+
+{
+  "user": {
+    "id": 42,
+    "username": "anon",
+    "roles": ["admin", "editor"]
+  }
+}
+
+{
+  "status": "ok",
+  "data": [
+    { "id": 1 },
+    { "id": 2 }
+  ]
+}
+
+Inny przykład JSON:
+
+{
+  "name": "Frieda",
+  "isDog": true,
+  "hobbies": ["eating", "sleeping", "barking"],
+  "age": 8,
+  "address": {
+    "work": null,
+    "home": ["Berlin", "Germany"]
+  },
+  "friends": [
+    {
+      "name": "Philipp",
+      "hobbies": ["eating", "sleeping", "reading"]
+    },
+    {
+      "name": "Mitch",
+      "hobbies": ["running", "snacking"]
+    }
+  ]
+}
+
+Uwaga!
+W pliku JSON nie ma komentarzy.
+Trzeba uważać na przecinki.
+
+Przykład.
+W tym pliku JSON są cztery błędy.
+
+{
+  "name": 'Frieda',
+  "address": {
+    "work": null, // Doesn't pay rent either
+    "home": "Berlin",
+  },
+  "friends": [
+    {
+      "name": "Philipp",
+      "hobbies": ["eating", "sleeping", "reading",]
+    }
+  ]
+}
+
+Zapis reprezentacji tektowej pliku json.
+>>> import json
+>>> food_ratings = {"organic dog food": 2, "human food": 10}
+>>> json.dumps(food_ratings)
+'{"organic dog food": 2, "human food": 10}'
+
+json.dumps(x) zwraca ciąg znaków.
+
+Tłumaczenie Python -> JSON
+Python	JSON
+dict ->	object
+list ->	array
+tuple ->	array
+str	  -> string
+int	-> number
+float ->	number
+True ->	true
+False ->	false
+None ->	null
+
+Uwaga!
+>>> available_nums = {(1, 2): True, 3: False}
+>>> json.dumps(available_nums)
+Traceback (most recent call last):
+  ...
+TypeError: keys must be str, int, float, bool or None, not tuple
+
+Przykład z zapisem do pliku
+
+import json
+
+dog_data = {
+  "name": "Frieda",
+  "is_dog": True,
+  "hobbies": ["eating", "sleeping", "barking",],
+  "age": 8,
+  "address": {
+    "work": None,
+    "home": ("Berlin", "Germany",),
+  },
+  "friends": [
+    {
+      "name": "Philipp",
+      "hobbies": ["eating", "sleeping", "reading",],
+    },
+    {
+      "name": "Mitch",
+      "hobbies": ["running", "snacking",],
+    },
+  ],
+}
+
+with open("hello_frieda.json", mode="w", encoding="utf-8") as write_file:
+    json.dump(dog_data, write_file)
+
+
+Wczytanie pliku json.
+
+json.loads(x) - wczytanie ze stringu
+json.load(f) - wczytanie z pliku
+
+>>> dog_registry = {1: {"name": "Frieda"}}
+>>> dog_json = json.dumps(dog_registry)
+>>> dog_json
+'{"1": {"name": "Frieda"}}'
+
+>>> new_dog_registry = json.loads(dog_json)
+>>> new_dog_registry == dog_registry
+False
+
+>>> new_dog_registry
+{'1': {'name': 'Frieda'}}
+
+>>> dog_registry
+{1: {'name': 'Frieda'}}
+
+Praca ze strukturą json.
+>>> new_dog_data = json.loads(dog_data_json)
+>>> new_dog_data
+{'name': 'Frieda', 'is_dog': True, 'hobbies': ['eating', 'sleeping', 'barking'],
+'age': 8, 'address': {'work': None, 'home': ['Berlin', 'Germany']}}
+>>> type(new_dog_data["address"]["home"])
+<class 'list'>
+
+
+Odczytanie z pliku.
+
+>>> import json
+>>> with open("hello_frieda.json", mode="r", encoding="utf-8") as read_file:
+...     frie_data = json.load(read_file)
+...
+
+Przykłady.
+
+Odczyt.
+
+Plik user.json
+{
+  "name": "Ala",
+  "age": 30,
+  "active": true
+}
+
+Wczytanie.
+
+with open("user.json", "r", encoding="utf-8") as f:
+    user = json.load(f)
+
+print(user["name"])
+print(user["age"])
+
+Zapis.
+
+data = {
+    "city": "Kraków",
+    "population": 800000,
+    "capital": False
+}
+
+with open("city.json", "w", encoding="utf-8") as f:
+    json.dump(data, f, indent=2, ensure_ascii=False)
+
+Stworzono plik:
+{
+  "city": "Kraków",
+  "population": 800000,
+  "capital": false
+}
+
+Modyfikacja.
+
+user.json
+[
+  { "id": 1, "name": "Ala" },
+  { "id": 2, "name": "Ola" }
+]
+
+with open("user.json", "r", encoding="utf-8") as f:
+    user = json.load(f)
+
+user["age"] += 1
+
+with open("user.json", "w", encoding="utf-8") as f:
+    json.dump(user, f, indent=2)
+
+Walidacja.
+try:
+    with open("data.json") as f:
+        json.load(f)
+    print("Poprawny JSON")
+except json.JSONDecodeError as e:
+    print("Błąd JSON:", e)
+
+    
