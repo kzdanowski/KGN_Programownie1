@@ -92,9 +92,9 @@ Pliki JSON to pliki tekstowe
 zawierające obiekt lub tablicę.
 
 Najprostsze pliki JSON to 
-{}
+obiekt: {} 
 lub 
-[]
+tablica: []
 
 Dostępne wartości to:
 null | false | true | object | array | number | string
@@ -145,7 +145,8 @@ Inny przykład JSON:
   "friends": [
     {
       "name": "Philipp",
-      "hobbies": ["eating", "sleeping", "reading"]
+      "hobbies": ["eating", "sleeping", "reading"],
+      "address": ["Warsaw", "Poland"]
     },
     {
       "name": "Mitch",

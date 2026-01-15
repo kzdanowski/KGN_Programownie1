@@ -1,0 +1,147 @@
+ZADANIA – PLIKI JSON (PYTHON)
+
+========================
+ZADANIA PROSTE
+========================
+
+Zadanie 1 — Wczytanie danych
+Dany jest plik user.json:
+{
+  "name": "Ala",
+  "age": 30,
+  "active": true
+}
+
+Polecenie:
+Wczytaj plik i wypisz na ekran:
+- imię użytkownika
+- wiek użytkownika
+
+
+Zadanie 2 — Typy danych
+Dany jest plik data.json:
+{
+  "x": 10,
+  "y": 3.14,
+  "flag": false
+}
+
+Polecenie:
+Po wczytaniu danych wypisz typy (type) wszystkich wartości.
+
+
+Zadanie 3 — Tablica wartości
+Dany jest plik numbers.json:
+[1, 2, 3, 4, 5]
+
+Polecenie:
+Wczytaj plik i oblicz sumę liczb.
+
+
+Zadanie 4 — Tablica obiektów
+Dany jest plik users.json:
+[
+  { "id": 1, "name": "Ala" },
+  { "id": 2, "name": "Ola" }
+]
+
+Polecenie:
+Wypisz imiona wszystkich użytkowników.
+
+
+Zadanie 5 — Zapis do pliku
+Polecenie:
+Utwórz plik config.json, który zawiera:
+- debug: false
+- port: 8080
+
+
+========================
+ZADANIA ŚREDNIO TRUDNE
+========================
+
+Zadanie 6 — Modyfikacja danych
+Dany jest plik user.json:
+{
+  "name": "Ala",
+  "age": 30
+}
+
+Polecenie:
+Zwiększ wiek użytkownika o 1 i zapisz zmodyfikowane dane z powrotem do pliku.
+
+
+Zadanie 7 — Filtrowanie danych
+Dany jest plik users.json:
+[
+  { "id": 1, "name": "Ala", "active": true },
+  { "id": 2, "name": "Ola", "active": false },
+  { "id": 3, "name": "Ela", "active": true }
+]
+
+Polecenie:
+Wypisz imiona użytkowników, którzy są aktywni.
+
+
+Zadanie 8 — Zliczanie
+Dany jest plik data.json:
+{
+  "values": [1, 2, 3, 4, 5, 6]
+}
+
+Polecenie:
+Policz, ile liczb jest większych od 3.
+
+
+Zadanie 9 — Zagnieżdżona struktura
+Dany jest plik order.json:
+{
+  "id": 1001,
+  "customer": {
+    "name": "Ala",
+    "email": "ala@example.com"
+  },
+  "items": [
+    { "product": "Book", "price": 30 },
+    { "product": "Pen", "price": 5 }
+  ]
+}
+
+Polecenie:
+Oblicz łączną cenę wszystkich produktów w zamówieniu.
+
+
+Zadanie 10 — Walidacja struktury
+Dany jest plik user.json.
+
+Polecenie:
+Sprawdź w programie, czy:
+- istnieje klucz "name"
+- istnieje klucz "age"
+- wartość "age" jest liczbą
+
+Jeśli którykolwiek warunek nie jest spełniony, wypisz komunikat o błędzie.
+
+
+Zadanie 11 — Konwersja danych
+Dany jest plik users.json (jak w zadaniu 7).
+
+Polecenie:
+Utwórz nowy plik active_users.json, który zawiera tylko aktywnych użytkowników.
+
+
+Zadanie 12 — Obsługa błędów
+Polecenie:
+Napisz program, który:
+- próbuje wczytać plik JSON
+- jeśli plik nie istnieje, wypisuje komunikat
+- jeśli plik nie jest poprawnym JSON-em, wypisuje komunikat
+
+
+========================
+UWAGI
+========================
+
+- Nie należy modyfikować formatu JSON.
+- Rozwiązania powinny wykorzystywać moduł json z biblioteki standardowej.
+- Zadania można rozwiązywać w jednym lub wielu plikach .py.
