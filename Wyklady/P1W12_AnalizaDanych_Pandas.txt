@@ -207,6 +207,12 @@ Name: sprzedaz, dtype: bool
 Liczba braków: 2
 
 s_clean = s.dropna()
+
+>>> import matplotlib.pyplot as plt
+>>> s_clean.plot()
+<Axes: >
+>>> plt.show()
+
 s_high = s_clean[ s_clean > 200 ]
 
 
@@ -215,6 +221,160 @@ print("Suma:", s_high.sum())
 print("Minimum:", s_high.min())
 print("Maksimum:", s_high.max())
 print("Odchylenie std:", s_high.std())
+
+-----------------------------
+
+Obiekty typu Series możemy też traktować jak
+wektory.
+
+s1 = pd.Series([1, 2, 3])
+s2 = pd.Series([4, 5, 6])
+
+s1+s2,
+s1*s2 - iloczyn po współrzędnych
+Iloczyn skalarny (dot product):
+s1.dot(s2)
+
+Korelacja
+s1.corr(s2)
+
+Uwaga!
+Series porównują wektory wzgl. indeksów,
+nie pozycji.
+
+>>> s1 = pd.Series([1, 2, 3], index=["a", "b", "c"])
+>>> s2 = pd.Series([10, 20, 30], index=["b", "c", "d"])
+>>> s1+s2
+a     NaN
+b    12.0
+c    23.0
+d     NaN
+dtype: float64
+
+s1.dot(s2) zgłosi błąd
+
+Jak ujednolicić indeksy?
+
+1. Reset indeksów
+s1_reset = s1.reset_index(drop=True)
+s2_reset = s2.reset_index(drop=True)
+
+2. Wspólne indeksy
+common = s1.index.intersection(s2.index)
+
+s1_common = s1.loc[common]
+s2_common = s2.loc[common]
+
+3. Suma indeksów
+all_idx = s1.index.union(s2.index)
+
+s1_all = s1.reindex(all_idx)
+s2_all = s2.reindex(all_idx)
+
+s1_all_fill = s1_all.fillna(0)
+s2_all_fill = s2_all.fillna(0)
+
+Inaczej.
+
+>>> s1a, s2a = s1.align(s2, join="inner")
+>>> s1a
+b    2
+c    3
+dtype: int64
+>>> s2a
+b    10
+c    20
+dtype: int64
+
+>>> s1o, s2o = s1.align(s2, join="outer")
+>>> s1o
+a    1.0
+b    2.0
+c    3.0
+d    NaN
+dtype: float64
+>>> s2o
+a     NaN
+b    10.0
+c    20.0
+d    30.0
+dtype: float64
+
+----------------------------------------------
+
+3. DataFrame
+
+Typ danych wielokolumnowy.
+
+'P1W12_data.csv':   
+# Name,Age,City
+# Alice,30,New York     
+# Bob,25,Los Angeles
+# Charlie,35,Chicago
+
+df_csv = pd.read_csv('P1W12_data1.csv')
+print(df_csv)
+      Name  Age           City
+0    Alice   30  New York
+1      Bob   25    Los Angeles
+2  Charlie   35        Chicago
+
+
+Z kolumn możemy utworzyć serię:
+series_from_csv = Series(df_csv['Age'])
+print("Series z pliku CSV:")
+print(series_from_csv)
+
+>>> df = pd.DataFrame({
+...     "imie": ["Ala", "Olek", "Jan"],
+...     "wiek": [20, 25, 30],
+...     "miasto": ["Warszawa", "Kraków", "Gdańsk"]
+... })
+>>>
+>>> print(df)
+   imie  wiek    miasto
+0   Ala    20  Warszawa
+1  Olek    25    Kraków
+2   Jan    30    Gdańsk
+
+>>> df.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 3 entries, 0 to 2
+Data columns (total 3 columns):
+ #   Column  Non-Null Count  Dtype
+---  ------  --------------  -----
+ 0   imie    3 non-null      object
+ 1   wiek    3 non-null      int64
+ 2   miasto  3 non-null      object
+dtypes: int64(1), object(2)
+memory usage: 204.0+ bytes
+>>> df.describe()
+       wiek
+count   3.0
+mean   25.0
+std     5.0
+min    20.0
+25%    22.5
+50%    25.0
+75%    27.5
+max    30.0
+
+>>> df.shape
+(3, 3)
+>>> df.size
+9
+
+>>> df.loc[0]
+imie           Ala
+wiek            20
+miasto    Warszawa
+Name: 0, dtype: object
+
+>>> df.loc[1, "wiek"]
+np.int64(25)
+
+
+
 
 
 
