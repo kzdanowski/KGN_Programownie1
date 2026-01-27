@@ -85,7 +85,7 @@ dtype: bool
 
 Obliczanie statystyk:
 s.sum(),
-s.mean(),
+s.mean() - średnia z elementów a, b, c to (a+b+c)/3
 s.min(),
 s.max(),
 s.std(),

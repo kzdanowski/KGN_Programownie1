@@ -1,0 +1,42 @@
+Lista zagadnień z Programowania 1. 2026/01/27
+
+1. Co to zmienna mutowalna? Jakie zmienne są mutowalne?
+2. Co to zmienna niemutowalna? Jakie zmienne są niemutowalne?
+3. Jakie są instrukcje pętli?
+4. Jak wygląda instrukcja warunkowa?
+5. Znaczenie instrukcji break i continue.
+6. Co to list comprehension? Jaka jest składnia tej operacji?
+7. Czy różni się set od list?
+8. Co umożliwia "f" w zapisie >>f'napis'<<
+   Co umożliwia "r" w zapisie >>r'napis'<<
+9. Jak można wpisać w ciągu znaków znak cudzysłowu: ", ' i ukośnik (\)?
+10. Jak definiujemy funkcje? Co znaczy słowo kluczowe "return"?
+11. Co to argument formalny, co to argument aktualny?
+12. Co to argument pozycyjny i nazwany? Co to argument domyślny?
+13. Jak zdefiniować funkcję, która przyjmuje nieokreśloną liczbę argumentów?
+14. Co to zmienna globalna? Co to zmienna lokalna? Jak odwołać się do zmiennej 
+globalnej w funkcji?
+14. Znaczenie "nonlocal", jak Python szuka zmiennych nonlocal?
+    Czy x w "nonlocal x" może być zmienną globalną"?
+15. Co to przesłanianie zmiennych?
+16. Jak moduł tworzy przestrzeń nazw?
+17. Które typy danych są przekazywane przez wartość, które przez referencję?
+18. Niech s będzie listą. Czym różni się x = s od x = s.copy() i x = deepcopy(s)
+19. Co to jest rekurencja? Co to przypadek bazowy w rekurencji?
+20. Co to są dane i metody klasy? Jak się do nich odwołujemy?
+21. Rola funkcji __init__ oraz __str__.
+22. Jak definiujemy dziedziczenie klas?
+23. Jak program może przechwycić wyjątek? 
+24. Przykłady wyjątków? Jak programista może zdefiniować własny wyjątek?
+25. Omów funkcje słów: try, except, as, else, finally w kontekście obsługi wyjątków.
+26. Co oznaczają argumenty "r", "w", "a" przy otwieraniu plików?
+27. Jakie mamy przykładowe kodowania plików tekstowych? Jakiego kodowania możemy użyć
+    przy kodowaniu polskich znaków?
+28. Jak otwieramy plik? Jaka konstrukcja nie zamykać później pliku ręcznie?
+29. Jaka biblioteka umożliwia wykorzystanie funkcji systemu operacyjnego w programie Pythona?
+30. Wyrażenia regularne. Znaczenie \d, \w, \s, \D, \W, \S, ^, $.
+    Znaczenie operatorów: *, +, ?, {n}, {n,m}.
+31. Różnice między finall, search oraz finditer.
+32. Jakie wartości mogą wystąpić w pliku json?
+    Jak tłumaczymy plik json na obiekt w Pythonie?
+
