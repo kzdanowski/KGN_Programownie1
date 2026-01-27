@@ -1,0 +1,222 @@
+Wykład 12. Analiza Danych,
+biblioteki pandas, numpy 
+
+
+import numpy as np
+import pandas as pd
+from pandas import DataFrame, Series
+
+1. Podstawowe zadania analizy danych
+
+1.1 Wczytywanie danych z różnych źródeł:
+pliki csv, json, excel, bazy danych, internet, ...
+
+1.2 Czyszczenie danych 
+Pliki, strony internetowe często zawierają
+nieuporządkowane dane, zaśmiecone,
+niesformatowane, ...
+
+a) usuwanie duplikatów,
+b) usuwanie brakujących danych,
+c) uzupełnianie danych,
+d) naprawa.
+
+1.3 Przekształcanie danych
+
+a) zmiana typów,
+b) wyliczanie nowych wartości,
+c) dodawanie nowych kolumn.
+
+1.4 Filtrowanie Danych
+
+Wybieranie tylko istotnych dla nas wartości,
+np. interesujących nas ludzi,
+pomiarów z danego okresu, miejsca, ...
+
+Usuwanie anomalii, danych odstających.
+
+1.5 Grupowanie danych, agregacja wyników
+
+a) Podział danych na klastry
+b) obliczanie funkcji prezentujących 
+zbiorcze wyniki: suma, średnia, mediana, wariancja, ...
+c) obliczanie statystyk w klastrach.
+
+1.6 Łączenie danych
+
+a) z różnych tabel w tej samej bazie danych,
+b) z różnych źródeł.
+
+1.7 Wizualizacja
+
+matplotlib, seaborn
+
+
+2. Pandas, Series
+
+Series jest jednowymiarową kolumną danych.
+Można myśleć o niej jako o tablicy lub wektorze.
+
+Różni się od nich tym, że umożliwia szybkie wykonywanie
+operacji na elementach tablicy.
+Umożliwia tworzenie własnych indeksów.
+
+Tworzenie - patrz plik P1W12_Pandas.python
+
+Podstawowe informacje
+Niech s będzie typu Series
+
+Na całym s można wykonywać operacje
+bez użycia pętli:
+s+10, s*10, s**2.
+
+Ogólniej: s.apply(function)
+Można też użyć słownika:
+s.map(dict)
+
+
+Stosować warunki logiczne:
+
+>>> s>15
+a    False
+b     True
+c     True
+dtype: bool
+
+Obliczanie statystyk:
+s.sum(),
+s.mean(),
+s.min(),
+s.max(),
+s.std(),
+s.median().
+
+Filtrować dane, np.
+>>> s[s>15]
+b    20
+c    30
+dtype: int64
+
+
+Można pracować z brakującymi danymi:
+
+>>> s.isna()
+a    False
+b    False
+c    False
+dtype: bool
+>>> s.notna()
+a    True
+b    True
+c    True
+dtype: bool
+
+s.dropna()
+s.fillna(value)
+
+
+Jeśli Series s zawiera ciągi znaków,
+możemy użyć s.str:
+s.str.upper(),
+s.str.lower(),
+s.str.contains("a"),
+s.str.len(), ...
+
+Uwaga.
+Brak wartości w Pythonie symbolizuje 
+None.
+
+W pandas jest to pd.NA.
+Wartości None są konwertowane do <NA>.
+
+Uwaga.
+>>> x=pd.Series([1,None,2, None], dtype='Int64')
+>>> x
+0       1
+1    <NA>
+2       2
+3    <NA>
+dtype: Int64
+
+Ale >>> x=pd.Series([1,None,2, None], dtype='int64')
+zgłosi błąd, bo int64 nie obsługuje None.
+
+Brak wartości, pd.NA, wprowadza logikę
+trójwartościową:
+>>> pd.NA == pd.NA
+<NA>
+
+Ale inaczej dla NaT (Not a Time):
+
+>>> pd.NaT == pd.NaT
+False
+>>> np.nan == np.nan
+False
+
+None - brak wartości w Pythonie,
+np.nan - brak wartości liczbowej w numpy,
+pd.NA - uniwersalny brak wartości,
+pd.NaT - Not a Time (pandas).
+
+
+Przykłady (za ChatGPT).
+
+>>> df = pd.read_csv("P1W12_sprzedaz.csv")
+>>> df
+   sprzedaz
+0     100.0
+1     200.0
+2       NaN
+3     150.0
+4     300.0
+5     400.0
+6       NaN
+7     250.0
+
+>>> type(df)
+<class 'pandas.core.frame.DataFrame'>
+
+Zmiana na Series.
+>>> s = df["sprzedaz"]
+>>> s
+0    100.0
+1    200.0
+2      NaN
+3    150.0
+4    300.0
+5    400.0
+6      NaN
+7    250.0
+Name: sprzedaz, dtype: float64
+>>> type(s)
+<class 'pandas.core.series.Series'>
+
+
+Brakujące dane.
+>>> print(s.isna())
+0    False
+1    False
+2     True
+3    False
+4    False
+5    False
+6     True
+7    False
+Name: sprzedaz, dtype: bool
+>>> print("Liczba braków:", s.isna().sum())
+Liczba braków: 2
+
+s_clean = s.dropna()
+s_high = s_clean[ s_clean > 200 ]
+
+
+print("Średnia:", s_high.mean())
+print("Suma:", s_high.sum())
+print("Minimum:", s_high.min())
+print("Maksimum:", s_high.max())
+print("Odchylenie std:", s_high.std())
+
+
+
+
+
