@@ -302,7 +302,9 @@ dtype: float64
 
 2.2 Przykłady zbierania danych
 
-Federal Reserve
+Rentowność 10 letnich obligacji usage
+z
+Federal Reserve Economic Data (FRED)
 
 >>> gs = web.get_data_fred('GS10')
 >>> gs
