@@ -19,8 +19,8 @@ s = pd.Series([10, 20, 30], index=[1, 2, 3])
 # - s[1] może oznaczać pierwszy element (o indeksie 0)
 #  lub element o indeksie 1 (wartość 10)
 
-Aby to ujednoznacznić, używamy .loc (dla etykiet indeksów) 
-oraz .iloc (dla pozycji indeksów):  
+# Aby to ujednoznacznić, używamy .loc (dla etykiet indeksów) 
+#oraz .iloc (dla pozycji indeksów):  
 
 print(s.loc[1])   # 10
 print(s.iloc[0])  # 10
