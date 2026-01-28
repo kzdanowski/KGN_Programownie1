@@ -305,7 +305,7 @@ dtype: float64
 Rentowność 10 letnich obligacji usage
 z
 Federal Reserve Economic Data (FRED)
-
+>>> import matplotlib as plt 
 >>> import pandas_datareader.data as web
 >>> gs = web.get_data_fred('GS10')
 >>> gs
@@ -399,6 +399,22 @@ Date
 2025-12-26  273.399994  275.369995  272.859985  274.160004  21521800
 2025-12-29  273.760010  274.359985  272.350006  272.690002  23715200
 2025-12-30  273.079987  274.079987  272.279999  272.809998  22139600
+
+>>> aapl.info()
+<class 'pandas.core.frame.DataFrame'>
+DatetimeIndex: 249 entries, 2025-01-02 to 2025-12-30
+Data columns (total 5 columns):
+ #   Column          Non-Null Count  Dtype
+---  ------          --------------  -----
+ 0   (Close, AAPL)   249 non-null    float64
+ 1   (High, AAPL)    249 non-null    float64
+ 2   (Low, AAPL)     249 non-null    float64
+ 3   (Open, AAPL)    249 non-null    float64
+ 4   (Volume, AAPL)  249 non-null    int64
+dtypes: float64(4), int64(1)
+memory usage: 11.7 KB
+
+
 
 ----------------------------------------------
 

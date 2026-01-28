@@ -1,5 +1,10 @@
 import pandas as pd
 from pandas import DataFrame, Series
+import numpy as np
+import matplotlib.pyplot as plt 
+import seaborn as sns
+
+
 
 # Tworzenie Series z danych słownikowych
 
@@ -24,8 +29,6 @@ s = pd.Series([10, 20, 30], index=[1, 2, 3])
 
 print(s.loc[1])   # 10
 print(s.iloc[0])  # 10
-
-
 
 # Tworzenie Series z listy
 data_list = [100, 200, 300, 400]
@@ -55,7 +58,7 @@ print("Series z pliku CSV:")
 print(series_from_csv)
 print("\n")    
 
-s = series_from_csv
+
 
 
 
@@ -81,4 +84,18 @@ data_list = [
 
 df_list = DataFrame(data_list)
 print("DataFrame z listy słowników:")
-print(df_list)      
+print(df_list)    
+
+
+# Pobieranie danych z Federal Reserve
+# Economic Data (FRED) i Yahoo Finance
+
+import pandas_datareader.data as web
+gs = web.get_data_fred('GS10')
+import yfinance as yf
+aapl = yf.download("AAPL", start="2025-01-01", end="2025-12-31")
+
+aapl.info()
+aapl.plot(y="Close")
+# <Axes: xlabel='Date'>
+plt.show()
