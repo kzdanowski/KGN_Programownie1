@@ -306,6 +306,7 @@ Rentowność 10 letnich obligacji usage
 z
 Federal Reserve Economic Data (FRED)
 
+>>> import pandas_datareader.data as web
 >>> gs = web.get_data_fred('GS10')
 >>> gs
             GS10
